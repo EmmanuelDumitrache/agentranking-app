@@ -2,7 +2,7 @@
 
 **A ranked, searchable directory of on-chain AI agents, plus a workspace for creating and managing your own.**
 
-> **Live demo:** TODO (link added after the Vercel deploy) · sign in with **Continue as demo user**, no wallet needed.
+> **Live demo:** https://agentranking-app.vercel.app · open `/auth/login` and choose **Continue as demo user**, no wallet needed.
 
 ![AgentRanking home page](docs/screenshots/home.png)
 
@@ -104,9 +104,18 @@ Useful scripts:
 
 ## Deploy to Vercel
 
-1. Create a Vercel project from this repository and add a **Neon** Postgres database from the Vercel Marketplace.
-2. Set the environment variables from [`.env.example`](.env.example). `VALKEY_URL` is optional in demo mode: without it, the cache and locks live in each server instance's memory and rate limits are off. The live demo runs this way. The five URL variables are the deployment's own origin. They must be set before the first build, because `NEXT_PUBLIC_*` values are compiled into the browser bundle.
-3. Run `pnpm demo:setup` once against the Neon database, then deploy.
+The live demo runs on Vercel Hobby with a Neon Postgres database and no Redis.
+
+1. Create a Vercel project and add a **Neon** database from the Vercel Marketplace.
+2. Set the environment variables from [`.env.example`](.env.example). `VALKEY_URL` is optional in demo mode: without it, the cache and locks live in each server instance's memory and rate limits are off. The five URL variables are the deployment's own origin. They must be set before building, because `NEXT_PUBLIC_*` values are compiled into the browser bundle.
+3. Run `pnpm demo:setup` once against the Neon database.
+4. Build locally and upload the result. The compile needs more memory than the 8 GB Hobby build machine has, so Git builds are turned off in [`vercel.json`](vercel.json):
+
+   ```bash
+   vercel pull --environment production
+   vercel build --prod
+   vercel deploy --prebuilt --prod --archive=tgz
+   ```
 
 ## Repository map
 
