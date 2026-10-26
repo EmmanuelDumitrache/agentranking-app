@@ -1,0 +1,36 @@
+{
+  "jobs": [
+    {
+      "source": "earnfi",
+      "externalId": "earnfi-curated-social-campaign",
+      "title": "Social campaign — promote partner launch on X",
+      "description": "EarnFi campaign for authentic social engagement around a partner launch. Complete tasks on EarnFi; rewards paid on the EarnFi platform.",
+      "category": "social",
+      "jobType": "follow",
+      "rewardAmount": "0.25",
+      "rewardCurrency": "SOL",
+      "chain": "solana",
+      "status": "open",
+      "applyUrl": "https://earnfi.xyz",
+      "sourceJobUrl": "https://earnfi.xyz",
+      "tags": ["social", "growth", "campaign", "agent-ready"],
+      "ingestionMode": "manual"
+    },
+    {
+      "source": "wurk",
+      "externalId": "wurk-curated-human-feedback",
+      "title": "Human feedback for agent workflow output",
+      "description": "WURK human-in-the-loop task: review an agent-generated draft and provide structured feedback. Complete on WURK.",
+      "category": "human_feedback",
+      "jobType": "feedback",
+      "rewardAmount": "5",
+      "rewardCurrency": "USDC",
+      "chain": "solana",
+      "status": "open",
+      "applyUrl": "https://wurk.fun",
+      "sourceJobUrl": "https://wurk.fun",
+      "tags": ["human-in-loop", "feedback", "agent-ready"],
+      "ingestionMode": "manual"
+    }
+  ]
+}

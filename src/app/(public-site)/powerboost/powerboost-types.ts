@@ -1,0 +1,37 @@
+export type PowerBoostData = Readonly<{
+  agents: ReadonlyArray<{
+    id: number;
+    agentId: number;
+    chainId: number;
+    name: string;
+    image: string;
+    owner: string;
+    score: number;
+    rank: number;
+    totalFeedback: number;
+    hasDuplicateName?: boolean;
+    sapVerified?: boolean | null;
+    sapTwinMatch?: boolean;
+    isVerified?: boolean;
+    isPremiumVerified?: boolean;
+    hotScore?: number;
+    powerScore?: number;
+    daoVotes?: number;
+    stakingVotes?: number;
+    paidBoostVotes?: number;
+    adminVotes?: number;
+    activeBoosts?: number;
+    adminPowerAdjust?: number;
+    hasHolderPowerBoost?: boolean;
+    holderPowerBoostBackerCount?: number;
+    holderPowerBoostUnits?: number;
+    lastActiveAt?: string | null;
+    slug?: string;
+    profilePath: string;
+    chain: { name: string; shortName: string; color: string; icon: string };
+  }>;
+  total: number;
+  page: number;
+  perPage: number;
+  totalPages: number;
+}>;

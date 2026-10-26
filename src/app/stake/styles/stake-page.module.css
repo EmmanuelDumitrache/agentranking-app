@@ -1,0 +1,303 @@
+/* Stake product — scoped layout and interaction tokens */
+.pageContainer {
+  position: relative;
+  z-index: 10;
+  margin-inline: auto;
+  max-width: var(--site-content-max-width, 75rem);
+  padding-inline: 1.25rem;
+}
+@media (min-width: 640px) {
+  .pageContainer {
+    padding-inline: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .pageContainer {
+    padding-inline: 2rem;
+  }
+}
+.statsBar {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.2));
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+}
+.statsBarInner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (min-width: 640px) {
+  .statsBarInner {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .statsBarInner {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+.statCell {
+  padding: 1rem 0.75rem;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+@media (min-width: 1024px) {
+  .statCell {
+    border-bottom: none;
+  }
+  .statCell:nth-child(6n) {
+    border-right: none;
+  }
+}
+@media (max-width: 1023px) {
+  .statCell:nth-child(2n) {
+    border-right: none;
+  }
+  .statCell:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+}
+.statValue {
+  font-size: 1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--foreground);
+}
+@media (min-width: 640px) {
+  .statValue {
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 1024px) {
+  .statValue {
+    font-size: 1.25rem;
+  }
+}
+.statLabel {
+  margin-top: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted-foreground);
+}
+.statSublabel {
+  margin-top: 0.2rem;
+  font-size: 0.5625rem;
+  font-weight: 500;
+  color: oklch(0.62 0.14 155 / 0.65);
+}
+.stakeSectionAlt {
+  background: rgba(255, 255, 255, 0.01);
+}
+.stakeSectionInner {
+  padding-top: 3.5rem !important;
+  padding-bottom: 3.5rem !important;
+}
+@media (min-width: 640px) {
+  .stakeSectionInner {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+@media (min-width: 1024px) {
+  .stakeSectionInner {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+}
+@media (min-width: 1280px) {
+  .stakeSectionInner {
+    padding-top: 6rem !important;
+    padding-bottom: 6rem !important;
+  }
+}
+.lockPillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.lockPill {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
+}
+.lockPill:hover {
+  border-color: color-mix(in oklab, var(--ar-blue) 28%, transparent);
+  background: color-mix(in oklab, var(--ar-blue) 6%, transparent);
+}
+.lockPillSelected {
+  border-color: color-mix(in oklab, var(--ar-blue) 40%, transparent);
+  background: color-mix(in oklab, var(--ar-blue) 10%, transparent);
+  color: var(--ar-text-primary);
+}
+.lockPillPct {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+.rewardPoolCardFocus:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--ar-blue) 55%, transparent);
+  outline-offset: 2px;
+}
+.rewardPoolsScrollWrap {
+  position: relative;
+  min-width: 0;
+}
+.rewardPoolsScrollWrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0.5rem;
+  width: 2.5rem;
+  pointer-events: none;
+  background: linear-gradient(to left, rgba(15, 16, 17, 0.95), transparent);
+}
+@media (min-width: 1024px) {
+  .rewardPoolsScrollWrap::after {
+    display: none;
+  }
+}
+.lockTierSelected {
+  border-color: color-mix(in oklab, var(--ar-blue) 35%, transparent) !important;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--ar-blue) 12%, transparent) inset,
+    0 0 28px color-mix(in oklab, var(--ar-blue) 10%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lockTierSelected {
+    animation: lockTierGlow 3s ease-in-out infinite;
+  }
+}
+@keyframes lockTierGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--ar-blue) 10%, transparent) inset,
+      0 0 20px color-mix(in oklab, var(--ar-blue) 8%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--ar-blue) 18%, transparent) inset,
+      0 0 32px color-mix(in oklab, var(--ar-blue) 14%, transparent);
+  }
+}
+.disclaimerBar {
+  border: 1px solid var(--ar-border);
+  border-radius: 10px;
+  background: var(--ar-glass-fill);
+  padding: 0.875rem 1rem;
+}
+.skeletonRow {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.07) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  background-size: 200% 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .skeletonRow {
+    animation: skeletonShimmer 2.2s ease-in-out infinite;
+  }
+}
+@keyframes skeletonShimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+.flywheelStepsCard {
+  border: 1px solid var(--ar-border);
+  border-radius: 12px;
+  background: var(--ar-glass-fill);
+  box-shadow: var(--ar-glass-highlight);
+  padding: 1.25rem 1.5rem;
+}
+@media (min-width: 1024px) {
+  .flywheelStepsCard {
+    padding: 1.5rem 2rem;
+  }
+}
+.flywheelStepsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.flywheelStep {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.flywheelStep:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.flywheelStep:first-child {
+  padding-top: 0;
+}
+.flywheelStepIndex {
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--ar-blue) 35%, transparent);
+  background: color-mix(in oklab, var(--ar-blue) 8%, transparent);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ar-blue);
+}
+.flywheelStepText {
+  padding-top: 0.35rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted-foreground);
+}
+@media (min-width: 640px) {
+  .flywheelStepText {
+    font-size: 0.9375rem;
+  }
+}
+.revealHidden {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.revealVisible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .revealHidden,
+  .revealVisible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,44 @@
+diff --git a/dist/esm/lib/idl.js b/dist/esm/lib/idl.js
+--- a/dist/esm/lib/idl.js
++++ b/dist/esm/lib/idl.js
+@@ -1,5 +1,39 @@
+ import { Keypair, } from "@solana/web3.js";
+-import { Program, AnchorProvider, EventParser, BorshAccountsCoder, BorshInstructionCoder, Wallet, } from "@coral-xyz/anchor";
++import { Program, AnchorProvider, EventParser, BorshAccountsCoder, BorshInstructionCoder, } from "@coral-xyz/anchor";
+ import BN from "bn.js";
+ import { formatIdl } from "./convertLegacyIdl.js";
++// Browser/ESM-safe equivalent of Anchor's NodeWallet. Anchor 0.30.1 does not
++// export Wallet from its ESM/browser entrypoint, so importing that name makes
++// strict bundlers (including Turbopack) fail before this module can execute.
++// Keep the local binding name as Wallet to minimize changes to the published
++// helper artifact while backporting upstream PR #84's KeypairWallet behavior.
++const Wallet = class KeypairWallet {
++    payer;
++    constructor(payer) {
++        this.payer = payer;
++    }
++    get publicKey() {
++        return this.payer.publicKey;
++    }
++    async signTransaction(tx) {
++        if ('version' in tx) {
++            tx.sign([this.payer]);
++        }
++        else {
++            tx.partialSign(this.payer);
++        }
++        return tx;
++    }
++    async signAllTransactions(txs) {
++        for (const tx of txs) {
++            if ('version' in tx) {
++                tx.sign([this.payer]);
++            }
++            else {
++                tx.partialSign(this.payer);
++            }
++        }
++        return txs;
++    }
++};
+ /**

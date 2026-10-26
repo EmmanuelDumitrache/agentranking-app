@@ -1,0 +1,84 @@
+diff --git a/dist/esm/core/client.js b/dist/esm/core/client.js
+--- a/dist/esm/core/client.js
++++ b/dist/esm/core/client.js
+@@ -26,1 +26,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/core/connection.js b/dist/esm/core/connection.js
+--- a/dist/esm/core/connection.js
++++ b/dist/esm/core/connection.js
+@@ -29,1 +29,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/modules/base.js b/dist/esm/modules/base.js
+--- a/dist/esm/modules/base.js
++++ b/dist/esm/modules/base.js
+@@ -12,1 +12,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/modules/escrow-v2.js b/dist/esm/modules/escrow-v2.js
+--- a/dist/esm/modules/escrow-v2.js
++++ b/dist/esm/modules/escrow-v2.js
+@@ -13,1 +13,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/modules/receipt.js b/dist/esm/modules/receipt.js
+--- a/dist/esm/modules/receipt.js
++++ b/dist/esm/modules/receipt.js
+@@ -6,1 +6,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/modules/subscription.js b/dist/esm/modules/subscription.js
+--- a/dist/esm/modules/subscription.js
++++ b/dist/esm/modules/subscription.js
+@@ -11,1 +11,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/parser/inner.js b/dist/esm/parser/inner.js
+--- a/dist/esm/parser/inner.js
++++ b/dist/esm/parser/inner.js
+@@ -33,1 +33,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/registries/builder.js b/dist/esm/registries/builder.js
+--- a/dist/esm/registries/builder.js
++++ b/dist/esm/registries/builder.js
+@@ -43,1 +43,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/registries/x402.js b/dist/esm/registries/x402.js
+--- a/dist/esm/registries/x402.js
++++ b/dist/esm/registries/x402.js
+@@ -67,1 +67,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/utils/escrow-validation.js b/dist/esm/utils/escrow-validation.js
+--- a/dist/esm/utils/escrow-validation.js
++++ b/dist/esm/utils/escrow-validation.js
+@@ -12,1 +12,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/utils/merchant-validator.js b/dist/esm/utils/merchant-validator.js
+--- a/dist/esm/utils/merchant-validator.js
++++ b/dist/esm/utils/merchant-validator.js
+@@ -16,1 +16,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/utils/volume-curve.js b/dist/esm/utils/volume-curve.js
+--- a/dist/esm/utils/volume-curve.js
++++ b/dist/esm/utils/volume-curve.js
+@@ -17,1 +17,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/client.js b/dist/esm/client.js
+--- a/dist/esm/client.js
++++ b/dist/esm/client.js
+@@ -6,1 +6,1 @@
+-import __anchor from "@coral-xyz/anchor";
++import * as __anchor from "@coral-xyz/anchor";
+diff --git a/dist/esm/registries/metaplex-bridge.js b/dist/esm/registries/metaplex-bridge.js
+--- a/dist/esm/registries/metaplex-bridge.js
++++ b/dist/esm/registries/metaplex-bridge.js
+@@ -646,1 +646,1 @@
+-        const { deriveGlobalRegistry } = await import("../pda");
++        const { deriveGlobalRegistry } = await import("../pda/index.js");

@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+
+# next.js / build output
+/.next/
+/out/
+/build
+/dist/
+/tmp/
+*.tsbuildinfo
+next-env.d.ts
+/src/generated/prisma/
+
+# environment: only the documented template is tracked
+.env*
+!/.env.example
+
+# user uploads served by the app at runtime
+/public/uploads/
+
+# tooling
+.DS_Store
+.vercel/
+.cursor/
+.playwright-mcp/
+*.pem
+/coverage
+/logs/
+*.log
+
+# files written by `next dev` for coding agents
+/AGENTS.md
+/CLAUDE.md

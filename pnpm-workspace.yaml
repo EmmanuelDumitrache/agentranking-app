@@ -1,0 +1,62 @@
+packages:
+  - packages/agent-domain
+# This repository intentionally accepts explicitly selected package versions immediately.
+minimumReleaseAge: 0
+overrides:
+  '@tanstack/query-core': 5.102.0
+  '@tanstack/react-query': 5.102.0
+  '@solana/web3.js': ^1.98.4
+  '@solana/wallet-adapter-base': ^0.9.27
+# These published SDKs import @noble/hashes/sha256 without declaring
+# @noble/hashes. Give each package its own v1 dependency so pnpm cannot
+# resolve the phantom import to @noble/hashes v2, which removed ./sha256.
+packageExtensions:
+  # plugin-defi's published graph still contains Noble v1-style
+  # @noble/hashes/sha256 imports. Keep compatible package-local dependencies;
+  # Next bundles/transpiles this graph so standalone preserves that resolution
+  # instead of flattening the imports onto the application's Noble v2 package.
+  '@solana-agent-kit/plugin-defi@2.0.8':
+    dependencies:
+      '@noble/hashes': 1.8.0
+  '@drift-labs/sdk@2.108.0-beta.6':
+    dependencies:
+      '@noble/hashes': 1.8.0
+  '@raydium-io/raydium-sdk-v2@0.1.139-alpha':
+    dependencies:
+      '@noble/hashes': 1.8.0
+# OOBE SAP SDK 1.0.3 still publishes native ESM with two packaging defects:
+# synthetic default imports from Anchor and one extensionless dynamic import.
+# Keep the dependency external and patch only the published package output.
+patchedDependencies:
+  # helpers 2.8.1 has a published ESM regression: it imports a non-existent
+  # Wallet root export from Anchor 0.30.1. This backports upstream PR #84's
+  # browser/ESM-safe KeypairWallet fix while keeping the dependency version
+  # expected by Meteora's m3m3 SDK.
+  '@solana-developers/helpers@2.8.1': patches/solana-developers-helpers-2.8.1-wallet.patch
+  # bigint-buffer's native addon is vulnerable through 1.1.5 (CVE-2025-3194)
+  # and has no fixed release. Force its existing pure-JS path instead.
+  'bigint-buffer@1.1.5': patches/bigint-buffer-1.1.5-pure-js.patch
+  '@oobe-protocol-labs/synapse-sap-sdk@1.0.3': patches/synapse-sap-sdk-1.0.3-node-esm.patch
+# pnpm 11 blocks dependency lifecycle scripts unless explicitly reviewed.
+# Keep this allowlist narrow; new script-bearing dependencies fail install until approved.
+allowBuilds:
+  '@prisma/engines': true
+  '@reown/appkit': true
+  '@stellar/stellar-sdk': true
+  '@swc/core': true
+  '@tailwindcss/oxide': true
+  bigint-buffer: false
+  blake-hash: true
+  bufferutil: true
+  esbuild: true
+  keccak: true
+  msgpackr-extract: true
+  node-hid: false
+  prisma: true
+  protobufjs: true
+  secp256k1: true
+  sharp: true
+  tiny-secp256k1: true
+  unrs-resolver: true
+  usb: false
+  utf-8-validate: true

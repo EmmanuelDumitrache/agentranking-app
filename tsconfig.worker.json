@@ -1,0 +1,38 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "incremental": false,
+    "jsx": "preserve",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2025",
+      "ESNext.Collection",
+      "ESNext.Error"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "plugins": [],
+    "types": [
+      "node",
+      "react",
+      "react-dom",
+      "next"
+    ],
+    "verbatimModuleSyntax": true
+  },
+  "include": [
+    "src/types/**/*.d.ts",
+    "src/jobs/**/*.ts",
+    "src/worker/**/*.ts",
+    "services/**/*.ts",
+    "packages/agent-domain/src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "dist"
+  ]
+}

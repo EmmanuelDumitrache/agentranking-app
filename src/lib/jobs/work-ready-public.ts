@@ -1,0 +1,21 @@
+export type PublicWorkReadyAgent = {
+  readonly id: number;
+  readonly agentId: number;
+  readonly chainId: number;
+  readonly name: string;
+  readonly slug: string;
+  readonly profilePath: string;
+  readonly image: string;
+  readonly description: string;
+  readonly archetype: string;
+  readonly agentRankScore: number;
+  readonly isVerified: boolean;
+  readonly isPremiumVerified: boolean;
+  readonly featuredWorkReady: boolean;
+  readonly workReadyStatus: string;
+  readonly hasWallet: boolean;
+  readonly hasX402: boolean;
+  readonly hasOnChain: boolean;
+  readonly hasDevProof: boolean;
+  readonly badges: string[];
+};

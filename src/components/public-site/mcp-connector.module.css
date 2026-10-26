@@ -1,0 +1,151 @@
+.page {
+  position: relative;
+}
+.heroGlow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 10%, rgba(255, 255, 255, 0.08), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(255, 255, 255, 0.04), transparent 50%);
+}
+.gridMask {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 70% 30%, black 15%, transparent 72%);
+}
+.scene {
+  position: relative;
+  height: 340px;
+  perspective: 1100px;
+  perspective-origin: 58% 42%;
+}
+.stage {
+  position: absolute;
+  inset: 12% 4% 8%;
+  transform-style: preserve-3d;
+  transform: rotateX(18deg) rotateY(-26deg);
+}
+.stageLive {
+  animation: mcpStageDrift 14s ease-in-out infinite;
+}
+.slab {
+  position: absolute;
+  transform-style: preserve-3d;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(40, 42, 46, 0.96) 0%, rgba(18, 19, 21, 0.96) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 22px 40px rgba(0, 0, 0, 0.45);
+}
+.slabFace {
+  padding: 14px 16px;
+}
+.slabClient {
+  left: 2%;
+  top: 18%;
+  width: 148px;
+  transform: translateZ(28px);
+}
+.slabMcp {
+  left: 34%;
+  top: 4%;
+  width: 176px;
+  z-index: 2;
+  transform: translateZ(56px);
+  border-color: rgba(245, 245, 247, 0.28);
+}
+.slabRegistry {
+  right: 2%;
+  top: 28%;
+  width: 168px;
+  transform: translateZ(18px);
+}
+.floatA {
+  animation: mcpFloat 5.2s ease-in-out infinite;
+}
+.floatB {
+  animation: mcpFloat 6s ease-in-out infinite 0.6s;
+}
+.floatC {
+  animation: mcpFloat 5.6s ease-in-out infinite 1.1s;
+}
+.chip {
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(12, 13, 15, 0.82);
+  padding: 4px 9px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.72);
+  white-space: nowrap;
+}
+.chipA {
+  left: 22%;
+  bottom: 18%;
+  transform: translateZ(40px);
+}
+.chipB {
+  right: 18%;
+  top: 8%;
+  transform: translateZ(44px);
+}
+.chipC {
+  right: 8%;
+  bottom: 22%;
+  transform: translateZ(24px);
+}
+.pathSvg {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+@keyframes mcpStageDrift {
+  0%,
+  100% {
+    transform: rotateX(18deg) rotateY(-26deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotateX(20deg) rotateY(-22deg) translate3d(6px, -4px, 8px);
+  }
+}
+@keyframes mcpFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -7px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stageLive,
+  .floatA,
+  .floatB,
+  .floatC {
+    animation: none;
+  }
+}
+@media (max-width: 1023px) {
+  .scene {
+    height: 280px;
+    perspective-origin: 50% 40%;
+  }
+  .slabClient,
+  .slabRegistry {
+    width: 132px;
+  }
+  .slabMcp {
+    width: 150px;
+  }
+}

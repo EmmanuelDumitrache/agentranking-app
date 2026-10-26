@@ -1,0 +1,38 @@
+/**
+ * Chain IDs supported by the in-app wagmi config (registration / launch selectors).
+ * Lives separately from `wallet-wagmi-config.ts` so pages that only need this list do not import viem/wagmi.
+ */
+export const WAGMI_CHAIN_IDS = new Set([
+  1,
+  137,
+  42161,
+  8453,
+  84532,
+  11155111,
+  100,
+  534352,
+  10,
+  56,
+  43114,
+  42220,
+  59144,
+  5000,
+  1868,
+  360,
+  196,
+  2345,
+  1088,
+  1187947933,
+  143,
+  167000,
+  9745,
+  4326,
+  2741,
+  2046399126,
+  45056,
+  1776,
+  4217,
+  42,
+  10088,
+  5042002,
+]);

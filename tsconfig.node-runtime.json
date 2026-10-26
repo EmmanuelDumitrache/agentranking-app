@@ -1,0 +1,30 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "allowJs": false,
+    "erasableSyntaxOnly": true,
+    "incremental": false,
+    "lib": [
+      "ES2025",
+      "ESNext.Collection",
+      "ESNext.Error"
+    ],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "plugins": [],
+    "rewriteRelativeImportExtensions": true,
+    "types": [
+      "node"
+    ],
+    "verbatimModuleSyntax": true
+  },
+  "include": [
+    "src/worker/settle-within.ts",
+    "src/lib/map-upsert.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

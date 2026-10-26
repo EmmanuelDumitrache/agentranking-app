@@ -1,0 +1,111 @@
+{
+  "exportedAt": "2026-06-24T12:41:35.523Z",
+  "canvasPx": 256,
+  "partners": [
+    {
+      "id": "acepyr",
+      "name": "Acepyr",
+      "source": "/partners/acepyr/logo.png",
+      "file": "acepyr.png",
+      "sizePx": 256
+    },
+    {
+      "id": "covenant",
+      "name": "Covenant",
+      "source": "/branding/covenant/covenant-logo.png",
+      "file": "covenant.png",
+      "sizePx": 256
+    },
+    {
+      "id": "earnfi",
+      "name": "EarnFi",
+      "source": "/partners/earnfi/icon.png",
+      "file": "earnfi.png",
+      "sizePx": 256
+    },
+    {
+      "id": "hatcher",
+      "name": "Hatcher Labs",
+      "source": "/branding/hatcher/hatcher-logo.jpeg",
+      "file": "hatcher-labs.png",
+      "sizePx": 256
+    },
+    {
+      "id": "hyre",
+      "name": "Hyre",
+      "source": "/branding/hyre/hyre-logo.png",
+      "file": "hyre.png",
+      "sizePx": 256
+    },
+    {
+      "id": "medusa",
+      "name": "Medusa",
+      "source": "/partners/medusa/logo.png",
+      "file": "medusa.png",
+      "sizePx": 256
+    },
+    {
+      "id": "metaplex",
+      "name": "Metaplex",
+      "source": "/branding/metaplex/metaplex-icon.png",
+      "file": "metaplex.png",
+      "sizePx": 256
+    },
+    {
+      "id": "oobe",
+      "name": "OOBE",
+      "source": "/branding/oobe/oobe-wordmark.png",
+      "file": "oobe.png",
+      "sizePx": 256
+    },
+    {
+      "id": "phantom",
+      "name": "Phantom",
+      "source": "/partners/phantom-mark.png",
+      "file": "phantom.png",
+      "sizePx": 256
+    },
+    {
+      "id": "qwerti",
+      "name": "Qwerti",
+      "source": "/partners/qwerti/logo.png",
+      "file": "qwerti.png",
+      "sizePx": 256
+    },
+    {
+      "id": "said",
+      "name": "SAID",
+      "source": "/partners/said/logo.png",
+      "file": "said.png",
+      "sizePx": 256
+    },
+    {
+      "id": "streamflow",
+      "name": "Streamflow",
+      "source": "/partners/streamflow-icon.png",
+      "file": "streamflow.png",
+      "sizePx": 256
+    },
+    {
+      "id": "synapse",
+      "name": "Synapse",
+      "source": "/news/articles/synapse-rpc-logo.png",
+      "file": "synapse.png",
+      "sizePx": 256
+    },
+    {
+      "id": "wurk",
+      "name": "WURK",
+      "source": "/partners/wurk/icon.png",
+      "file": "wurk.png",
+      "sizePx": 256
+    },
+    {
+      "id": "xona",
+      "name": "Xona",
+      "source": "/news/articles/xona-agent-logo.png",
+      "file": "xona.png",
+      "sizePx": 256
+    }
+  ]
+}

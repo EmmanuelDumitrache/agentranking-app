@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#080808" />
+  <title>AgentRanking — Deployment in progress</title>
+  <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080808;
+      --grid: rgba(228, 228, 228, 0.04);
+      --card: #0f0f0f;
+      --text: rgba(228, 228, 228, 0.92);
+      --muted: rgba(228, 228, 228, 0.48);
+      --border: rgba(228, 228, 228, 0.09);
+      --accent: #3fa266;
+      --gold: #c9a227;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 32px 32px;
+      color: var(--text);
+    }
+    main { width: min(100%, 26rem); text-align: center; }
+    article {
+      padding: 2.25rem 1.75rem 2rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--card);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+    }
+    .brand { display: flex; align-items: center; justify-content: center; gap: 0.65rem; margin-bottom: 1.5rem; }
+    .brand img { width: 40px; height: 40px; border-radius: 10px; }
+    .brand span { font-size: 0.95rem; font-weight: 600; letter-spacing: -0.03em; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin: 0 0 1rem;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-radius: 999px;
+      background: rgba(201, 162, 39, 0.16);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0 0 0.85rem; font-size: 1.45rem; line-height: 1.2; letter-spacing: -0.035em; }
+    .summary { margin: 0 0 1.35rem; color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(63, 162, 102, 0.32);
+      border-radius: 999px;
+      background: rgba(63, 162, 102, 0.14);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .dots { display: inline-flex; gap: 4px; }
+    .dots span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    .dots span:nth-child(2) { animation-delay: 0.15s; }
+    .dots span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes pulse {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+      40% { transform: translateY(-4px); opacity: 1; }
+    }
+    .bar {
+      height: 3px;
+      margin-top: 1.35rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--accent), transparent);
+      background-size: 200% 100%;
+      animation: slide 2.4s linear infinite;
+    }
+    @keyframes slide { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+    footer { margin-top: 1rem; color: rgba(228, 228, 228, 0.28); font-size: 0.72rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <article>
+      <div class="brand"><img src="/logo.svg" alt="" /><span>AgentRanking</span></div>
+      <p class="eyebrow"><span aria-hidden="true">◆</span>Production deploy</p>
+      <h1>Deployment in progress</h1>
+      <p class="summary">The web application and indexing worker are being rebuilt and restarted. Persistent database, wallet, and upload data are not replaced by the deployment.</p>
+      <p class="status" aria-live="polite"><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span>Update in progress</p>
+      <div class="bar" aria-hidden="true"></div>
+    </article>
+    <footer>This page is removed automatically after both runtime health checks pass.</footer>
+  </main>
+</body>
+</html>

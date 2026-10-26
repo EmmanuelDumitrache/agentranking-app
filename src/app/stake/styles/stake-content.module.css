@@ -1,0 +1,1418 @@
+/* Stake site — scoped product styles (tokens live in globals.css :root) */
+.pageBackdrop {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    var(--site-background) 0%,
+    var(--site-surface) 50%,
+    oklch(0.04 0.015 155) 100%
+  );
+}
+.pageBackdropGrid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+  background-size: 96px 96px;
+  pointer-events: none;
+}
+.heroGlow {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  width: min(90vw, 56rem);
+  height: 42vh;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse 70% 80% at 50% 0%, oklch(0.62 0.14 155 / 0.09), transparent 70%);
+  pointer-events: none;
+}
+.sectionGridOverlay {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.006) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.006) 1px, transparent 1px);
+  background-size: 96px 96px;
+  pointer-events: none;
+}
+.sectionHeroGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 55% at 50% 0%, oklch(0.62 0.14 155 / 0.1), transparent 65%);
+  pointer-events: none;
+}
+.sectionFlywheelGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 40%, oklch(0.62 0.14 155 / 0.08), transparent 70%);
+  pointer-events: none;
+}
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 85% 75% at 50% 45%, transparent 40%, oklch(0.04 0.02 250 / 0.85) 100%);
+  pointer-events: none;
+}
+.noiseOverlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.sectionShell {
+  scroll-margin-top: 5.5rem;
+}
+.cardGlow {
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+.cardGlow:hover {
+  border-color: oklch(0.65 0.2 145 / 0.45);
+  box-shadow:
+    0 0 0 1px oklch(0.65 0.2 145 / 0.12),
+    0 12px 40px oklch(0 0 0 / 0.35);
+}
+.heroMockGlow {
+  position: relative;
+}
+.heroMockGlow::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  z-index: -1;
+  border-radius: 1.5rem;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 40%,
+    oklch(0.55 0.18 145 / 0.18),
+    oklch(0.5 0.12 250 / 0.08) 45%,
+    transparent 70%
+  );
+  filter: blur(28px);
+  pointer-events: none;
+}
+.heroMockFrame {
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.06),
+    0 20px 50px oklch(0 0 0 / 0.45);
+  border: 1px solid oklch(1 0 0 / 0.08);
+  border-radius: 1rem;
+  background: linear-gradient(165deg, oklch(0.16 0.02 250 / 0.95), oklch(0.1 0.02 250 / 0.98));
+  overflow: hidden;
+}
+.heroMockChromeDot {
+  height: 0.45rem;
+  width: 0.45rem;
+  border-radius: 9999px;
+  background: oklch(0.65 0.2 145 / 0.55);
+}
+.heroMockChromeDotMuted {
+  background: oklch(0.72 0.02 250 / 0.35);
+}
+.protocolChip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid oklch(1 0 0 / 0.1);
+  padding: 0.15rem 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.protocolChipEmerald {
+  border-color: oklch(0.65 0.2 145 / 0.35);
+  color: oklch(0.78 0.18 145);
+  background: oklch(0.65 0.2 145 / 0.1);
+}
+.protocolChipGold {
+  border-color: oklch(0.75 0.14 85 / 0.4);
+  color: oklch(0.85 0.12 85);
+  background: oklch(0.75 0.14 85 / 0.1);
+}
+.protocolChipBlue {
+  border-color: oklch(0.6 0.15 250 / 0.35);
+  color: oklch(0.78 0.12 250);
+  background: oklch(0.55 0.15 250 / 0.1);
+}
+.statValue {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: oklch(0.95 0.02 145);
+}
+.chainTrack:hover {
+  animation-play-state: paused;
+}
+@keyframes stakeChainScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.chainChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  rounded: 0.75rem;
+  border: 1px solid oklch(1 0 0 / 0.08);
+  background: oklch(0.14 0.02 250 / 0.8);
+  padding: 0.4rem 0.65rem;
+  transition: border-color 150ms ease;
+}
+.chainChip:hover {
+  border-color: oklch(0.65 0.2 145 / 0.35);
+}
+.flywheelRing {
+  position: relative;
+  aspect-ratio: 1;
+  max-width: 22rem;
+  margin-inline: auto;
+}
+.flywheelStep {
+  position: absolute;
+  width: 7.5rem;
+  text-align: center;
+  font-size: 0.7rem;
+  line-height: 1.35;
+}
+.showcaseCard {
+  min-width: 0;
+  flex: 0 0 min(100%, 20rem);
+  scroll-snap-align: start;
+}
+.showcaseScroll {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.partnerStatusLive {
+  border-color: oklch(0.65 0.2 145 / 0.45);
+  color: oklch(0.78 0.18 145);
+  background: oklch(0.65 0.2 145 / 0.12);
+}
+.partnerStatusPartner {
+  border-color: oklch(0.62 0.14 155 / 0.4);
+  color: oklch(0.82 0.1 155);
+  background: oklch(0.62 0.14 155 / 0.12);
+}
+.partnerStatusIndexed {
+  border-color: oklch(0.75 0.14 85 / 0.45);
+  color: oklch(0.88 0.1 85);
+  background: oklch(0.75 0.14 85 / 0.12);
+}
+.partnerStatusProgress {
+  border-color: oklch(0.6 0.15 250 / 0.4);
+  color: oklch(0.78 0.12 250);
+  background: oklch(0.55 0.15 250 / 0.1);
+}
+.partnerStatusSoon {
+  border-color: oklch(1 0 0 / 0.15);
+  color: oklch(0.72 0.02 250);
+  background: oklch(0.2 0.02 250 / 0.5);
+}
+.tierCardNode {
+  border-color: oklch(0.65 0.2 145 / 0.25);
+}
+.tierCardValidator {
+  border-color: oklch(0.75 0.14 85 / 0.35);
+}
+.tierCardCore {
+  border-color: oklch(0.75 0.14 85 / 0.5);
+  box-shadow: 0 0 32px oklch(0.75 0.14 85 / 0.08);
+}
+/* Premium marketing chrome */
+.navPillWrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 0.75rem 1rem 0;
+  pointer-events: none;
+}
+.navPillBar {
+  pointer-events: auto;
+  margin-inline: auto;
+  display: flex;
+  max-width: var(--site-content-max-width);
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid oklch(1 0 0 / 0.08);
+  background: oklch(0.1 0.02 250 / 0.72);
+  padding: 0.35rem 0.5rem 0.35rem 0.85rem;
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 1px 0 oklch(1 0 0 / 0.04) inset,
+    0 12px 40px oklch(0 0 0 / 0.35);
+}
+.navPillLink {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: oklch(0.72 0.02 250);
+  border-radius: 9999px;
+  transition:
+    color 150ms ease,
+    background 150ms ease;
+}
+.navPillLink:hover {
+  color: oklch(0.95 0.02 145);
+  background: oklch(1 0 0 / 0.04);
+}
+.navPillDivider {
+  width: 1px;
+  height: 1.25rem;
+  background: oklch(1 0 0 / 0.08);
+  flex-shrink: 0;
+}
+.premiumCard {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(5, 15, 12, 0.55);
+  backdrop-filter: blur(10px);
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+.premiumCard:hover {
+  border-color: oklch(0.62 0.14 155 / 0.28);
+}
+.premiumCardHover {
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+.premiumCardHover:hover {
+  border-color: oklch(0.62 0.14 155 / 0.32);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px oklch(0 0 0 / 0.35);
+}
+.navPillBarScrolled {
+  border-color: oklch(0.62 0.14 155 / 0.18);
+  background: oklch(0.08 0.02 250 / 0.88);
+  backdrop-filter: blur(20px);
+}
+.premiumCardHighlight {
+  border-color: oklch(0.62 0.14 155 / 0.4);
+  box-shadow:
+    inset 0 1px 0 oklch(0.62 0.14 155 / 0.08),
+    0 0 32px oklch(0.62 0.14 155 / 0.1);
+}
+.stakingDashboardFrame {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  background: linear-gradient(165deg, rgba(5, 15, 12, 0.65), rgba(8, 12, 18, 0.9));
+  overflow: hidden;
+}
+.stakingDashboardPanel {
+  padding: 1.5rem;
+}
+.scoreRingGlow {
+  filter: drop-shadow(0 0 12px oklch(0.62 0.14 155 / 0.35));
+}
+.flywheelDiagramTrack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .flywheelDiagramTrack {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+  }
+}
+.flywheelLoopCaption {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: oklch(0.62 0.14 155 / 0.65);
+}
+.chainTrack {
+  animation: stakeChainScroll 60s linear infinite;
+}
+.sectionTitle {
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.flywheelCinematic {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid oklch(1 0 0 / 0.08);
+  background: linear-gradient(180deg, oklch(0.11 0.02 250 / 0.95), oklch(0.08 0.02 250 / 0.98));
+  padding: 2rem 1.5rem;
+}
+.flywheelCinematic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(0.55 0.18 145 / 0.12) 50%,
+    transparent 100%
+  );
+  animation: flywheelShimmer 8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes flywheelShimmer {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateX(-30%);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(30%);
+  }
+}
+.flywheelNode {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 8rem;
+  min-width: 0;
+  padding: 1rem 1.1rem;
+  border-radius: 0.75rem;
+  border: 1px solid oklch(1 0 0 / 0.08);
+  background: oklch(0.13 0.02 250 / 0.8);
+}
+.flywheelNodeActive {
+  border-color: oklch(0.62 0.14 155 / 0.45);
+  box-shadow:
+    inset 0 1px 0 oklch(0.62 0.14 155 / 0.1),
+    0 0 28px oklch(0.62 0.14 155 / 0.12);
+}
+.flywheelConnector {
+  flex-shrink: 0;
+  color: oklch(0.62 0.14 155 / 0.5);
+  align-self: center;
+}
+.flywheelConnectorLine {
+  width: 1px;
+  min-height: 1.5rem;
+  background: linear-gradient(180deg, oklch(0.62 0.14 155 / 0.5), oklch(0.62 0.14 155 / 0.15));
+  margin-inline: auto;
+}
+@media (min-width: 1024px) {
+  .flywheelConnectorLine {
+    width: 1.5rem;
+    min-height: 1px;
+    height: 1px;
+    background: linear-gradient(90deg, oklch(0.62 0.14 155 / 0.5), oklch(0.62 0.14 155 / 0.15));
+  }
+}
+.terminalRow {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.6875rem;
+  border-radius: 0.375rem;
+  border: 1px solid oklch(1 0 0 / 0.05);
+  background: oklch(0.12 0.02 250 / 0.5);
+}
+.statsStrip {
+  border: 1px solid oklch(1 0 0 / 0.06);
+  background: oklch(0.08 0.02 155 / 0.35);
+  backdrop-filter: blur(12px);
+}
+.statsStripSlim {
+  padding-block: 0.875rem;
+}
+.statsStripSlim .statValue {
+  font-size: 1.375rem;
+}
+@media (min-width: 640px) {
+  .statsStripSlim .statValue {
+    font-size: 1.5rem;
+  }
+}
+/* Feature showcase cards */
+.featureCard {
+  display: flex;
+  height: 100%;
+  min-height: 10.5rem;
+  flex-direction: column;
+  border-radius: var(--site-card-radius);
+  border: 1px solid var(--site-card-border);
+  background: linear-gradient(165deg, rgba(5, 15, 12, 0.55), rgba(3, 8, 7, 0.75));
+  padding: 1.25rem 1.35rem;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+.featureCard:hover {
+  border-color: oklch(0.62 0.14 155 / 0.32);
+  box-shadow: 0 8px 32px oklch(0.62 0.14 155 / 0.08);
+  transform: translateY(-2px);
+}
+.featureCardIcon {
+  display: inline-flex;
+  height: 2rem;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px solid oklch(0.62 0.14 155 / 0.2);
+  background: oklch(0.62 0.14 155 / 0.08);
+  color: oklch(0.78 0.16 155);
+}
+/* Flywheel orbit diagram */
+.flywheelOrbit {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid oklch(1 0 0 / 0.07);
+  background: linear-gradient(165deg, oklch(0.09 0.02 155 / 0.5), oklch(0.06 0.015 250 / 0.95));
+  padding: 1.5rem 1.25rem 1.75rem;
+}
+.flywheelOrbitTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+@media (min-width: 1024px) {
+  .flywheelOrbitTrack {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+.flywheelOrbitNode {
+  flex: 1;
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 0.625rem;
+  border: 1px solid oklch(1 0 0 / 0.06);
+  background: oklch(0.1 0.02 155 / 0.35);
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+.flywheelOrbitNode:hover {
+  border-color: oklch(0.62 0.14 155 / 0.35);
+  box-shadow: 0 0 20px oklch(0.62 0.14 155 / 0.1);
+}
+.flywheelOrbitNodeAccent {
+  border-color: oklch(0.62 0.14 155 / 0.45);
+  box-shadow: 0 0 28px oklch(0.62 0.14 155 / 0.12);
+}
+.flywheelOrbitConnector {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: oklch(0.62 0.14 155 / 0.45);
+  padding: 0.25rem 0;
+}
+@media (min-width: 1024px) {
+  .flywheelOrbitConnector {
+    padding: 0 0.15rem;
+  }
+}
+.flywheelOrbitLoop {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: oklch(0.62 0.14 155 / 0.7);
+}
+.allocationChip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid oklch(0.62 0.14 155 / 0.22);
+  background: oklch(0.62 0.14 155 / 0.06);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+/* Flywheel allocation panel (Xona-inspired) */
+.flywheelAllocationPanel {
+  border-radius: 1.25rem;
+  border: 1px solid oklch(1 0 0 / 0.1);
+  background: oklch(1 0 0 / 0.02);
+  padding: 1.5rem 1.25rem;
+}
+@media (min-width: 640px) {
+  .flywheelAllocationPanel {
+    padding: 1.75rem 1.5rem;
+  }
+}
+.flywheelAllocationGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media (min-width: 1024px) {
+  .flywheelAllocationGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.15fr);
+    gap: 1.5rem 1rem;
+    align-items: stretch;
+  }
+}
+.flywheelAllocationSourceEyebrow,
+.flywheelAllocationMechanismEyebrow {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.flywheelAllocationSourceTitle {
+  margin-top: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--foreground);
+}
+@media (min-width: 1024px) {
+  .flywheelAllocationSourceTitle {
+    font-size: 1.25rem;
+  }
+}
+.flywheelAllocationSourceCopy {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.flywheelAllocationMechanism {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .flywheelAllocationMechanism {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 0.25rem;
+  }
+}
+.flywheelAllocationMechanismPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px solid oklch(1 0 0 / 0.1);
+  background: oklch(1 0 0 / 0.04);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--foreground);
+  white-space: nowrap;
+}
+.flywheelAllocationMechanismArrow {
+  height: 1rem;
+  width: 1rem;
+  flex-shrink: 0;
+  color: oklch(0.62 0.14 155 / 0.45);
+}
+@media (min-width: 1024px) {
+  .flywheelAllocationMechanismArrow {
+    transform: rotate(0deg);
+  }
+}
+.flywheelAllocationRows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.flywheelAllocationRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid oklch(1 0 0 / 0.08);
+  background: oklch(1 0 0 / 0.03);
+  padding: 0.85rem 1rem;
+}
+.flywheelAllocationRowAccent {
+  border-color: oklch(0.62 0.14 155 / 0.45);
+  background: oklch(0.62 0.14 155 / 0.06);
+  box-shadow: 0 0 24px oklch(0.62 0.14 155 / 0.1);
+}
+.flywheelAllocationRowIcon {
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px solid oklch(1 0 0 / 0.08);
+  background: oklch(1 0 0 / 0.04);
+  color: var(--muted-foreground);
+}
+.flywheelAllocationRowAccent .flywheelAllocationRowIcon {
+  border-color: oklch(0.62 0.14 155 / 0.35);
+  color: oklch(0.72 0.14 155);
+}
+.flywheelAllocationRowBody {
+  min-width: 0;
+  flex: 1;
+}
+.flywheelAllocationRowTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--foreground);
+}
+.flywheelAllocationRowCopy {
+  margin-top: 0.2rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--muted-foreground);
+}
+.flywheelAllocationPct {
+  flex-shrink: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--foreground);
+}
+@media (min-width: 640px) {
+  .flywheelAllocationPct {
+    font-size: 2.5rem;
+  }
+}
+.flywheelAllocationDisclaimer {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.flywheelLoopDetails {
+  margin-top: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid oklch(1 0 0 / 0.06);
+  background: oklch(1 0 0 / 0.015);
+}
+.flywheelLoopDetailsSummary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.85rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+.flywheelLoopDetailsSummary::-webkit-details-marker {
+  display: none;
+}
+.flywheelLoopDetailsSummary::after {
+  content: "+";
+  float: right;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+.flywheelLoopDetails[open] .flywheelLoopDetailsSummary::after {
+  content: "−";
+}
+.flywheelLoopDetailsBody {
+  border-top: 1px solid oklch(1 0 0 / 0.06);
+  padding: 0 1rem 1rem;
+}
+.flywheelLoopPhases {
+  display: grid;
+  gap: 0.75rem;
+  padding-top: 0.85rem;
+}
+@media (min-width: 640px) {
+  .flywheelLoopPhases {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.flywheelLoopPhase {
+  border-radius: 0.5rem;
+  border: 1px solid oklch(1 0 0 / 0.06);
+  padding: 0.65rem 0.75rem;
+}
+.flywheelLoopPhaseLabel {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: oklch(0.62 0.14 155 / 0.8);
+}
+.flywheelLoopPhaseSteps {
+  margin-top: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+.flywheelLoopPhaseStep {
+  margin-top: 0.35rem;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+}
+.flywheelLoopPhaseStepTitle {
+  font-weight: 600;
+  color: var(--foreground);
+}
+.flywheelLoopNodesList {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+@media (min-width: 640px) {
+  .flywheelLoopNodesList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .flywheelLoopNodesList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.flywheelLoopNodeItem {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+}
+.flywheelLoopNodeIndex {
+  flex-shrink: 0;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: oklch(0.62 0.14 155 / 0.7);
+}
+.flywheelLoopNodeTitle {
+  font-weight: 600;
+  color: var(--foreground);
+}
+/* Flywheel flow — horizontal step carousel */
+.flywheelPhaseDiagram {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid oklch(1 0 0 / 0.08);
+  background: linear-gradient(165deg, oklch(0.09 0.02 155 / 0.45), oklch(0.06 0.015 250 / 0.95));
+  padding: 1.25rem 1rem 1.5rem;
+}
+@media (min-width: 640px) {
+  .flywheelPhaseDiagram {
+    padding-inline: 1.25rem;
+  }
+}
+.flywheelFlowScrollWrap {
+  position: relative;
+  min-width: 0;
+}
+.flywheelFlowScrollWrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0.5rem;
+  width: 2rem;
+  pointer-events: none;
+  background: linear-gradient(to left, oklch(0.06 0.015 250 / 0.98), transparent);
+}
+@media (min-width: 1280px) {
+  .flywheelFlowScrollWrap::after {
+    display: none;
+  }
+}
+.flywheelFlowTrack {
+  display: flex;
+  gap: 0.65rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.35rem;
+  scrollbar-gutter: stable;
+}
+.flywheelFlowCard {
+  position: relative;
+  flex: 0 0 min(72vw, 9.5rem);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  min-height: 7.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid oklch(1 0 0 / 0.07);
+  background: oklch(0.1 0.02 155 / 0.4);
+  padding: 0.85rem 0.9rem;
+}
+@media (min-width: 640px) {
+  .flywheelFlowCard {
+    flex: 0 0 min(42vw, 10rem);
+  }
+}
+@media (min-width: 1280px) {
+  .flywheelFlowTrack {
+    overflow-x: visible;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+  .flywheelFlowCard {
+    flex: unset;
+    min-width: 0;
+    min-height: 6.75rem;
+    padding-right: 1.35rem;
+  }
+}
+.flywheelFlowCardAccent {
+  border-color: oklch(0.62 0.14 155 / 0.45);
+  box-shadow: 0 0 20px oklch(0.62 0.14 155 / 0.12);
+}
+.flywheelFlowIndex {
+  font-size: 0.625rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: oklch(0.62 0.14 155 / 0.75);
+}
+.flywheelFlowTitle {
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--foreground);
+}
+.flywheelFlowCopy {
+  margin-top: 0.35rem;
+  flex: 1;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+}
+.flywheelFlowArrow {
+  position: absolute;
+  top: 50%;
+  right: -0.35rem;
+  height: 0.875rem;
+  width: 0.875rem;
+  transform: translateY(-50%);
+  color: oklch(0.62 0.14 155 / 0.4);
+}
+.flywheelFlowLoop {
+  margin-top: 0.85rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: oklch(0.62 0.14 155 / 0.75);
+}
+.flywheelDiagramFooter {
+  margin-top: 1.25rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid oklch(1 0 0 / 0.07);
+}
+.flywheelFeeSplitTrack {
+  display: flex;
+  height: 0.5rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: oklch(1 0 0 / 0.06);
+}
+.flywheelFeeSplitRewards {
+  width: 80%;
+  background: linear-gradient(90deg, oklch(0.55 0.16 155 / 0.7), oklch(0.68 0.14 155 / 0.95));
+}
+.flywheelFeeSplitTreasury {
+  flex: 1;
+  background: oklch(1 0 0 / 0.08);
+}
+.flywheelFeeSplitLabels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 0.65rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+.flywheelFeeSplitRewardsLabel {
+  font-weight: 500;
+  color: var(--foreground);
+}
+.flywheelFeeSplitTreasuryLabel {
+  color: var(--muted-foreground);
+}
+.flywheelDiagramDisclaimer {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.allocationChipMuted {
+  border-color: oklch(1 0 0 / 0.1);
+  background: oklch(1 0 0 / 0.03);
+  color: var(--muted-foreground);
+}
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-left: 2px solid transparent;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease;
+}
+.mobileNavLink:hover {
+  color: var(--foreground);
+  background: oklch(1 0 0 / 0.04);
+}
+.mobileNavLinkActive {
+  border-left-color: oklch(0.62 0.14 155 / 0.85);
+  color: var(--foreground);
+}
+.rewardPoolsGrid {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem;
+  scrollbar-gutter: stable;
+}
+.rewardPoolsGrid > * {
+  flex: 0 0 min(72vw, 11rem);
+  scroll-snap-align: start;
+}
+@media (min-width: 640px) {
+  .rewardPoolsGrid > * {
+    flex: 0 0 min(42%, 11rem);
+  }
+}
+@media (min-width: 1024px) {
+  .rewardPoolsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow: visible;
+    gap: 0.75rem;
+  }
+  .rewardPoolsGrid > * {
+    flex: unset;
+    min-width: 0;
+  }
+}
+.rewardPoolCard {
+  display: flex;
+  min-height: 11.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border: 1px solid oklch(1 0 0 / 0.08);
+  background: linear-gradient(180deg, oklch(0.1 0.02 155 / 0.4), oklch(0.06 0.015 250 / 0.85));
+  padding: 1.25rem 1rem;
+  text-align: center;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+.rewardPoolCardInteractive {
+  cursor: pointer;
+  width: 100%;
+}
+.rewardPoolCardInteractive:hover {
+  border-color: oklch(0.62 0.14 155 / 0.3);
+  transform: translateY(-2px);
+}
+.rewardPoolPct {
+  font-size: 2.25rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: oklch(0.95 0.02 145);
+}
+@media (min-width: 1024px) {
+  .rewardPoolPct {
+    font-size: 2.5rem;
+  }
+}
+.rewardPoolRewardsLabel {
+  margin-top: 0.65rem;
+  max-width: 9rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: oklch(0.72 0.02 250);
+}
+.rewardPoolPeriod {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+.rewardPoolPeriodMicro {
+  margin-top: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: oklch(0.62 0.14 155 / 0.65);
+}
+.poweredByStreamflow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 1rem;
+  border: 1px solid oklch(1 0 0 / 0.06);
+  background: linear-gradient(180deg, oklch(0.08 0.02 250 / 0.5), oklch(0.05 0.015 250 / 0.8));
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+}
+.poweredByStreamflowRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.65rem;
+}
+.poweredByStreamflowLogo {
+  display: inline-flex;
+  height: 1.75rem;
+  width: 1.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+.poweredByStreamflowSub {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.poweredByStreamflowInline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  border-top: 1px solid oklch(1 0 0 / 0.08);
+  padding-top: 1.5rem;
+  text-align: left;
+}
+.poweredByStreamflowInline .poweredByStreamflowRow {
+  justify-content: flex-start;
+}
+.flywheelMechanism {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid oklch(1 0 0 / 0.08);
+  background: linear-gradient(165deg, oklch(0.1 0.02 250 / 0.9), oklch(0.07 0.02 250 / 0.98));
+  padding: 1.75rem 1.25rem;
+}
+.flywheelMechanismTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+@media (min-width: 1024px) {
+  .flywheelMechanismTrack {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+.flywheelMechanismStepWrap {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (min-width: 1024px) {
+  .flywheelMechanismStepWrap {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.flywheelMechanismStep {
+  flex: 1;
+  min-width: 0;
+  padding: 1rem 1.1rem;
+  border-radius: 0.75rem;
+  border: 1px solid oklch(1 0 0 / 0.07);
+  background: oklch(0.12 0.02 250 / 0.65);
+}
+.flywheelMechanismStepAccent {
+  border-color: oklch(0.62 0.14 155 / 0.4);
+  box-shadow: 0 0 24px oklch(0.62 0.14 155 / 0.1);
+}
+.flywheelMechanismIndex {
+  display: inline-flex;
+  margin-bottom: 0.5rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  background: oklch(1 0 0 / 0.06);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: oklch(0.72 0.02 250);
+}
+.flywheelMechanismConnector {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 1px;
+  margin-inline: 0.25rem;
+  background: linear-gradient(90deg, oklch(0.62 0.14 155 / 0.45), oklch(0.62 0.14 155 / 0.1));
+  animation: flywheelPulse 3s ease-in-out infinite;
+}
+.flywheelMechanismArrow {
+  color: oklch(0.62 0.14 155 / 0.55);
+}
+.flywheelMechanismLoop {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: oklch(0.62 0.14 155 / 0.75);
+}
+.flywheelMechanismLoopIcon {
+  margin-right: 0.35rem;
+  vertical-align: -2px;
+  animation: flywheelPulse 3s ease-in-out infinite;
+}
+@keyframes flywheelPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.indexProgressBar {
+  height: 100%;
+  width: 62%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, oklch(0.55 0.16 155 / 0.5), oklch(0.68 0.14 155 / 0.85));
+  animation: indexProgressPulse 4s ease-in-out infinite;
+}
+@keyframes indexProgressPulse {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.indexStatusPill {
+  display: inline-flex;
+  border-radius: 9999px;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.indexStatusVerified {
+  border: 1px solid oklch(0.62 0.14 155 / 0.35);
+  color: oklch(0.78 0.16 155);
+  background: oklch(0.62 0.14 155 / 0.1);
+}
+.indexStatusIndexed {
+  border: 1px solid oklch(0.6 0.15 250 / 0.35);
+  color: oklch(0.78 0.12 250);
+  background: oklch(0.55 0.15 250 / 0.1);
+}
+.indexStatusPartner {
+  border: 1px solid oklch(0.75 0.14 85 / 0.35);
+  color: oklch(0.88 0.1 85);
+  background: oklch(0.75 0.14 85 / 0.1);
+}
+.feeFlowMini {
+  border: 1px solid oklch(1 0 0 / 0.08);
+  border-radius: 0.875rem;
+  background: linear-gradient(160deg, oklch(0.11 0.02 250 / 0.85), oklch(0.08 0.02 250 / 0.95));
+  padding: 1.25rem;
+}
+.statComingOnline {
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: oklch(0.62 0.14 155 / 0.65);
+}
+.flywheelLoopCompact {
+  border: 1px solid oklch(1 0 0 / 0.08);
+  border-radius: 1rem;
+  background: linear-gradient(165deg, oklch(0.1 0.02 250 / 0.85), oklch(0.07 0.02 250 / 0.98));
+  padding: 1.25rem 1.5rem;
+}
+.flywheelLoopCompactLabel {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.flywheelLoopCompactRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.flywheelLoopCompactRow .flywheelLoopCompactArrow {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .flywheelLoopCompactRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.25rem;
+  }
+  .flywheelLoopCompactRow .flywheelLoopCompactArrow {
+    display: block;
+  }
+}
+.flywheelLoopCompactItem {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+@media (min-width: 1024px) {
+  .flywheelLoopCompactItem {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.flywheelLoopCompactChip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px solid oklch(0.62 0.14 155 / 0.22);
+  background: oklch(0.62 0.14 155 / 0.06);
+  padding: 0.4rem 0.65rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--foreground);
+  white-space: nowrap;
+}
+.flywheelLoopCompactArrow {
+  height: 0.875rem;
+  width: 0.875rem;
+  flex-shrink: 0;
+  color: oklch(0.62 0.14 155 / 0.45);
+}
+.flywheelLoopCompactReturn {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.6875rem;
+  color: oklch(0.62 0.14 155 / 0.7);
+  text-align: center;
+}
+.flywheelLoop {
+  border: 1px solid oklch(1 0 0 / 0.08);
+  border-radius: 1rem;
+  background: linear-gradient(165deg, oklch(0.1 0.02 250 / 0.9), oklch(0.07 0.02 250 / 0.98));
+  padding: 1.5rem;
+}
+.flywheelLoopTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.flywheelLoopNode {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+}
+.flywheelLoopNodeLabel {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+.flywheelLoopNodeSub {
+  font-size: 0.6875rem;
+  color: var(--muted-foreground);
+  margin-top: 0.15rem;
+}
+.flywheelLoopDot {
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: 0.35rem;
+  border-radius: 9999px;
+  background: oklch(0.62 0.14 155 / 0.85);
+  box-shadow: 0 0 10px oklch(0.62 0.14 155 / 0.4);
+}
+.flywheelLoopConnector {
+  margin-left: 0.2rem;
+  height: 1.25rem;
+  width: 1px;
+  background: linear-gradient(180deg, oklch(0.62 0.14 155 / 0.45), oklch(0.62 0.14 155 / 0.08));
+}
+@media (prefers-reduced-motion: no-preference) {
+  .flywheelLoopConnector {
+    animation: flywheelPulse 2.8s ease-in-out infinite;
+  }
+}
+.flywheelLoopReturn {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed oklch(0.62 0.14 155 / 0.2);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: oklch(0.62 0.14 155 / 0.75);
+}
+@media (prefers-reduced-motion: reduce) {
+  .chainTrack {
+    animation: none;
+  }
+  .flywheelCinematic::before {
+    animation: none;
+    opacity: 0.25;
+    transform: none;
+  }
+  .premiumCardHover:hover {
+    transform: none;
+  }
+  .flywheelMechanismConnector,
+  .flywheelMechanismLoopIcon,
+  .indexProgressBar {
+    animation: none;
+  }
+}

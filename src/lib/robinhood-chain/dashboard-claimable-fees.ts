@@ -1,0 +1,22 @@
+export type DashboardRobinhoodClaimableFeesDto = {
+  readonly ok: true;
+  readonly canClaim: boolean;
+  readonly reason?: string;
+  readonly claimableWeth: string;
+  readonly claimableWei: string;
+  readonly claimableTokenRaw: string;
+  readonly hasIndexedFees: boolean;
+  readonly grossCollectWeth: string;
+  readonly afterProtocolWeth: string;
+  readonly claimableUsd: string | null;
+  readonly creatorWallet: string;
+  readonly positionId: string | null;
+  readonly locker: string;
+  readonly tokenAddress: string;
+  readonly poolAddress: string | null;
+  readonly protocolFeeSharePercent: number;
+  readonly feeSplitEnabled: boolean;
+  readonly creatorFeeBps: number;
+  readonly arFeeBps: number;
+  readonly checkedAt: string;
+};

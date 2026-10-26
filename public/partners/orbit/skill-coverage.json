@@ -1,0 +1,901 @@
+{
+  "version": "orbit_skill_coverage_v0",
+  "generatedAt": "2026-06-16T07:42:08.891Z",
+  "source": "AgentRanking V0 Orbit API taxonomy and public Orbit curated MCP export",
+  "summary": {
+    "total": 48,
+    "strong": 5,
+    "weakOrFallback": 11,
+    "missing": 10,
+    "orbitNative": 22
+  },
+  "topRecommendedNextSkills": [
+    "wallet_history",
+    "token_price",
+    "competitive_analysis",
+    "market_sizing",
+    "supplier_discover"
+  ],
+  "coverage": [
+    {
+      "skillId": "get_weather",
+      "category": "Daily Utility",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Orbit-native utility; use weather APIs directly."
+    },
+    {
+      "skillId": "set_reminder",
+      "category": "Daily Utility",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Orbit should own reminders, notifications, and user state."
+    },
+    {
+      "skillId": "set_timer",
+      "category": "Daily Utility",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Orbit-native timer/device UX; do not route through AgentRanking."
+    },
+    {
+      "skillId": "get_news",
+      "category": "Daily Utility",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "missing",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Could add only if focused on crypto/agent news feeds; otherwise Orbit-native/news API."
+    },
+    {
+      "skillId": "quick_lookup",
+      "category": "Daily Utility",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "missing",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Potential V1 generic lookup wrapper, but current AgentRanking API is agent/crypto-specific."
+    },
+    {
+      "skillId": "list_manage",
+      "category": "Daily Utility",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Orbit should own user lists and state."
+    },
+    {
+      "skillId": "calendar_add",
+      "category": "Daily Utility",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Orbit should integrate calendar providers directly."
+    },
+    {
+      "skillId": "sports_scores",
+      "category": "Daily Utility",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Use sports data APIs directly; no AgentRanking fit."
+    },
+    {
+      "skillId": "smart_home",
+      "category": "Daily Utility",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Device control should stay Orbit-native."
+    },
+    {
+      "skillId": "play_music",
+      "category": "Daily Utility",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Music provider/session state should stay Orbit-native."
+    },
+    {
+      "skillId": "get_directions",
+      "category": "Travel & Local",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Maps/location routing should stay Orbit-native."
+    },
+    {
+      "skillId": "price_track",
+      "category": "Shopping & Price Tracking",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Consumer price watches should stay Orbit-native unless crypto/token prices."
+    },
+    {
+      "skillId": "price_compare",
+      "category": "Shopping & Price Tracking",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Shopping comparison needs retailer APIs; no current AgentRanking fit."
+    },
+    {
+      "skillId": "package_track",
+      "category": "Shopping & Price Tracking",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Carrier tracking should stay Orbit-native."
+    },
+    {
+      "skillId": "subscription_audit",
+      "category": "Shopping & Price Tracking",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Requires banking/email access; do not power via AgentRanking V0."
+    },
+    {
+      "skillId": "spend_track",
+      "category": "Shopping & Price Tracking",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Requires private finance data; should stay Orbit-native/banking integration."
+    },
+    {
+      "skillId": "generate_image",
+      "category": "Content Creation",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "medium",
+      "currentBestMatchingAgents": [
+        {
+          "name": "testwang",
+          "slug": "testwang",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 56,
+          "verified": true
+        },
+        {
+          "name": "0xyas",
+          "slug": "0xyas",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        },
+        {
+          "name": "Julie Idol",
+          "slug": "julie-idol",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "testwang (exact, mcp_unknown); 0xyas (exact, mcp_ready); Julie Idol (exact, mcp_ready)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Keep in V0 as inferred creative-agent discovery; add explicit agentSkills before claiming full image support."
+    },
+    {
+      "skillId": "generate_video",
+      "category": "Content Creation",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "weak",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "testwang",
+          "slug": "testwang",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 56,
+          "verified": true
+        },
+        {
+          "name": "0xyas",
+          "slug": "0xyas",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (similar, mcp_ready); testwang (similar, mcp_unknown); 0xyas (similar, mcp_ready)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Fallback only; add explicit creative/video skills or leave as similar-to-image discovery."
+    },
+    {
+      "skillId": "write_content",
+      "category": "Content Creation",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "weak",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "0xyas",
+          "slug": "0xyas",
+          "matchType": "keyword",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        },
+        {
+          "name": "Julie Idol",
+          "slug": "julie-idol",
+          "matchType": "keyword",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (similar, mcp_ready); 0xyas (keyword, mcp_ready); Julie Idol (keyword, mcp_ready)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Fallback/keyword only; add explicit writing/content agent skills before partner-facing claims."
+    },
+    {
+      "skillId": "summarize_doc",
+      "category": "Research",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "weak",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "testwang",
+          "slug": "testwang",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 56,
+          "verified": true
+        },
+        {
+          "name": "Polymarket",
+          "slug": "polymarket",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (similar, mcp_ready); testwang (similar, mcp_unknown); Polymarket (similar, mcp_ready)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Fallback only; current agents are research-adjacent, not confirmed document summarizers."
+    },
+    {
+      "skillId": "deep_research",
+      "category": "Research",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "weak",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "Polymarket",
+          "slug": "polymarket",
+          "matchType": "keyword",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        },
+        {
+          "name": "testwang",
+          "slug": "testwang",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 56,
+          "verified": true
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (similar, mcp_ready); Polymarket (keyword, mcp_ready); testwang (similar, mcp_unknown)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Usable fallback through analytics/research agents; add explicit research capabilities."
+    },
+    {
+      "skillId": "competitive_analysis",
+      "category": "Research",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "missing",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Valuable V1 add; map to research/analytics agents with explicit business-analysis skills."
+    },
+    {
+      "skillId": "market_sizing",
+      "category": "Research",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "missing",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Valuable V1 add; needs research/market-data taxonomy."
+    },
+    {
+      "skillId": "home_search",
+      "category": "Real Estate & Insurance",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Real estate inventory/local user prefs should stay Orbit-native."
+    },
+    {
+      "skillId": "insurance_compare",
+      "category": "Real Estate & Insurance",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Regulated insurance comparison should not route through AgentRanking V0."
+    },
+    {
+      "skillId": "flight_discovery",
+      "category": "Travel & Local",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Travel inventory/API integration should stay Orbit-native."
+    },
+    {
+      "skillId": "hotel_discovery",
+      "category": "Travel & Local",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Hotel inventory/API integration should stay Orbit-native."
+    },
+    {
+      "skillId": "trip_plan",
+      "category": "Travel & Local",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "missing",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Could be Orbit-native with optional research-agent fallback later; not AgentRanking V0."
+    },
+    {
+      "skillId": "parking_finder",
+      "category": "Travel & Local",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Local availability/payment should stay Orbit-native."
+    },
+    {
+      "skillId": "gift_send",
+      "category": "Personal & Lifestyle",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Ordering/payment flow should stay Orbit-native."
+    },
+    {
+      "skillId": "birthday_remind",
+      "category": "Personal & Lifestyle",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Personal reminder state should stay Orbit-native."
+    },
+    {
+      "skillId": "wallet_balance",
+      "category": "Finance & Crypto",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "strong",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "CLAWDtoshi",
+          "slug": "clawdtoshi",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 40,
+          "verified": false
+        },
+        {
+          "name": "RED MEDICINE",
+          "slug": "red-medicine",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 38,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (exact, mcp_ready); CLAWDtoshi (exact, mcp_ready); RED MEDICINE (exact, mcp_unknown)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Keep live; current V0 has strong portfolio/wallet agent matches, but balance reads are discovery not execution."
+    },
+    {
+      "skillId": "wallet_transfer",
+      "category": "Finance & Crypto",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "medium",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "testwang",
+          "slug": "testwang",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 56,
+          "verified": true
+        },
+        {
+          "name": "CLAWDtoshi",
+          "slug": "clawdtoshi",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 40,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (exact, mcp_ready); testwang (exact, mcp_unknown); CLAWDtoshi (exact, mcp_ready)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Discovery of transfer/payment-capable agents only; do not claim AgentRanking executes transfers."
+    },
+    {
+      "skillId": "wallet_history",
+      "category": "Finance & Crypto",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "missing",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Valuable V1 add; can map to existing on-chain activity/financials MCP data."
+    },
+    {
+      "skillId": "token_price",
+      "category": "Finance & Crypto",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "weak",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "Polymarket",
+          "slug": "polymarket",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        },
+        {
+          "name": "0xyas",
+          "slug": "0xyas",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (similar, mcp_ready); Polymarket (similar, mcp_ready); 0xyas (similar, mcp_ready)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Fallback only right now; add explicit price/oracle/feed skills for stronger support."
+    },
+    {
+      "skillId": "token_info",
+      "category": "Finance & Crypto",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "strong",
+      "currentBestMatchingAgents": [
+        {
+          "name": "0xyas",
+          "slug": "0xyas",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        },
+        {
+          "name": "Julie Idol",
+          "slug": "julie-idol",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        },
+        {
+          "name": "KATY PERRY",
+          "slug": "katy-perry",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "0xyas (exact, mcp_ready); Julie Idol (exact, mcp_ready); KATY PERRY (exact, mcp_ready)",
+      "mcpReadinessQuality": "strong",
+      "recommendedNextAction": "Strong V0 fit through token/metadata/market-agent matches."
+    },
+    {
+      "skillId": "trending_tokens",
+      "category": "Finance & Crypto",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "strong",
+      "currentBestMatchingAgents": [
+        {
+          "name": "0xyas",
+          "slug": "0xyas",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        },
+        {
+          "name": "Julie Idol",
+          "slug": "julie-idol",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        },
+        {
+          "name": "KATY PERRY",
+          "slug": "katy-perry",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "0xyas (exact, mcp_ready); Julie Idol (exact, mcp_ready); KATY PERRY (exact, mcp_ready)",
+      "mcpReadinessQuality": "strong",
+      "recommendedNextAction": "Strong V0 fit through trending/hot/launch/memecoin agent matches."
+    },
+    {
+      "skillId": "token_swap",
+      "category": "Finance & Crypto",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "medium",
+      "currentBestMatchingAgents": [
+        {
+          "name": "Hyre",
+          "slug": "hyre",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 39,
+          "verified": false
+        },
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "keyword",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "0xyas",
+          "slug": "0xyas",
+          "matchType": "keyword",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "Hyre (exact, mcp_unknown); EmblemAI (keyword, mcp_ready); 0xyas (keyword, mcp_ready)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Some exact and fallback trading/swap agents; discovery only, no swap execution."
+    },
+    {
+      "skillId": "stock_price",
+      "category": "Finance & Crypto",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "missing",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Potential V1 if non-crypto market-data agents are indexed; otherwise Orbit-native finance API."
+    },
+    {
+      "skillId": "fx_rates",
+      "category": "Finance & Crypto",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "missing",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Potential V1 if market-data/oracle agents are indexed; otherwise use FX API directly."
+    },
+    {
+      "skillId": "lead_generate",
+      "category": "Business / Work",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "weak",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "0xyas",
+          "slug": "0xyas",
+          "matchType": "keyword",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        },
+        {
+          "name": "Julie Idol",
+          "slug": "julie-idol",
+          "matchType": "keyword",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (similar, mcp_ready); 0xyas (keyword, mcp_ready); Julie Idol (keyword, mcp_ready)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Fallback/keyword only; needs explicit lead-gen agents or admin curation."
+    },
+    {
+      "skillId": "seo_research",
+      "category": "Business / Work",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "medium",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "testwang",
+          "slug": "testwang",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 56,
+          "verified": true
+        },
+        {
+          "name": "testy",
+          "slug": "testy",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 18,
+          "verified": true
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (exact, mcp_ready); testwang (exact, mcp_unknown); testy (exact, mcp_unknown)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Some exact matches, but still inferred; add explicit SEO/research skills."
+    },
+    {
+      "skillId": "supplier_discover",
+      "category": "Business / Work",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "missing",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Valuable business V1 only if supplier/procurement agents are indexed."
+    },
+    {
+      "skillId": "pay_supplier",
+      "category": "Business / Work",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "missing",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "Potential x402/payment V1, but supplier payments require Orbit-owned workflows and controls."
+    },
+    {
+      "skillId": "review_mining",
+      "category": "Business / Work",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "weak",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "three.ws",
+          "slug": "three-ws",
+          "matchType": "keyword",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 39,
+          "verified": false
+        },
+        {
+          "name": "testwang",
+          "slug": "testwang",
+          "matchType": "similar",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 56,
+          "verified": true
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (similar, mcp_ready); three.ws (keyword, mcp_ready); testwang (similar, mcp_unknown)",
+      "mcpReadinessQuality": "medium",
+      "recommendedNextAction": "Fallback/social sentiment adjacent only; add explicit review/sentiment skills."
+    },
+    {
+      "skillId": "call_agent",
+      "category": "Agent Economy",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "strong",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "testwang",
+          "slug": "testwang",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 56,
+          "verified": true
+        },
+        {
+          "name": "0xyas",
+          "slug": "0xyas",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 45,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (exact, mcp_ready); testwang (exact, mcp_unknown); 0xyas (exact, mcp_ready)",
+      "mcpReadinessQuality": "strong",
+      "recommendedNextAction": "Keep as flagship V0 skill; already finds callable/MCP/A2A/service agents."
+    },
+    {
+      "skillId": "xpay_do",
+      "category": "Agent Economy",
+      "inCurrentAgentRankingApi": true,
+      "currentMatchQuality": "strong",
+      "currentBestMatchingAgents": [
+        {
+          "name": "EmblemAI",
+          "slug": "emblemai",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 53,
+          "verified": true
+        },
+        {
+          "name": "testwang",
+          "slug": "testwang",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_unknown",
+          "arScore": 56,
+          "verified": true
+        },
+        {
+          "name": "CLAWDtoshi",
+          "slug": "clawdtoshi",
+          "matchType": "exact",
+          "mcpReadiness": "mcp_ready",
+          "arScore": 40,
+          "verified": false
+        }
+      ],
+      "currentBestMatchingAgentsText": "EmblemAI (exact, mcp_ready); testwang (exact, mcp_unknown); CLAWDtoshi (exact, mcp_ready)",
+      "mcpReadinessQuality": "strong",
+      "recommendedNextAction": "Keep as flagship V0 discovery for x402/xpay-capable agents; execution remains Orbit/target agent."
+    },
+    {
+      "skillId": "upload_file",
+      "category": "Agent Economy",
+      "inCurrentAgentRankingApi": false,
+      "currentMatchQuality": "should-be-orbit-native",
+      "currentBestMatchingAgents": [],
+      "currentBestMatchingAgentsText": "None in V0",
+      "mcpReadinessQuality": "none",
+      "recommendedNextAction": "File upload/storage/session handling should be Orbit-native; AgentRanking can consume file-derived intent later."
+    }
+  ]
+}

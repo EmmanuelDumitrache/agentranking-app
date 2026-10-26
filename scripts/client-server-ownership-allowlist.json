@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "clientRouteEntries": [
+    {
+      "path": "src/app/(public-site)/verify/passport/[id]/page.tsx",
+      "reason": "Passport public dynamic viewer renders on client for wallet signature verification.",
+      "owner": "Verification team",
+      "removalCondition": "Remove when passport preview moves to server component with client action boundaries."
+    }
+  ],
+  "mountTimeClientLoaders": [
+    {
+      "path": "src/app/admin/admin-chrome.tsx",
+      "reason": "Portal-only session heartbeat is a bounded POST side effect, not a primary GET loader.",
+      "owner": "Shared coordinator",
+      "removalCondition": "Remove only if the admin session no longer requires a browser heartbeat."
+    },
+    {
+      "path": "src/components/launch/launch-page-client.tsx",
+      "reason": "A confirmed on-chain registration is finalized through bounded mount polling only while a transaction hash is pending directory reconciliation.",
+      "owner": "Agent 4",
+      "removalCondition": "Remove when registration finalization becomes push-driven or is completed entirely before navigation."
+    },
+    {
+      "path": "src/components/dashboard/account-verification-page.tsx",
+      "reason": "Client dashboard tab loads user KYC status on mount.",
+      "owner": "Verification team",
+      "removalCondition": "Remove when dashboard layout provides server-resolved verification state."
+    },
+    {
+      "path": "src/components/dashboard/trade-page.tsx",
+      "reason": "Trade page loads current balance and pairs on mount.",
+      "owner": "Trading team",
+      "removalCondition": "Remove when trade route server loads initial pair data."
+    },
+    {
+      "path": "src/components/treasury/agentcard-dashboard-panel.tsx",
+      "reason": "Treasury AgentCard panel fetches card metadata on mount.",
+      "owner": "Treasury team",
+      "removalCondition": "Remove when server component passes card summary."
+    },
+    {
+      "path": "src/components/treasury/ar-card-dashboard.tsx",
+      "reason": "Treasury AR Card dashboard fetches cards on mount.",
+      "owner": "Treasury team",
+      "removalCondition": "Remove when server layout provides card inventory."
+    },
+    {
+      "path": "src/components/treasury/ar-card-panel.tsx",
+      "reason": "AR Card panel loads card status on mount.",
+      "owner": "Treasury team",
+      "removalCondition": "Remove when server layout provides initial status."
+    },
+    {
+      "path": "src/components/treasury/card-issuance-panel.tsx",
+      "reason": "Card issuance panel fetches eligibility and quotes on mount.",
+      "owner": "Treasury team",
+      "removalCondition": "Remove when issuance quote is server rendered."
+    },
+    {
+      "path": "src/components/treasury/stablecoin-card-panel.tsx",
+      "reason": "Stablecoin card panel loads balances on mount.",
+      "owner": "Treasury team",
+      "removalCondition": "Remove when treasury server route passes initial balances."
+    },
+    {
+      "path": "src/components/treasury/stripe-issuing-sandbox-dashboard.tsx",
+      "reason": "Stripe sandbox panel loads test cards on mount.",
+      "owner": "Treasury team",
+      "removalCondition": "Remove when sandbox dashboard uses server props."
+    },
+    {
+      "path": "src/components/verification/verify-flow.tsx",
+      "reason": "Verification flow loads session status on mount.",
+      "owner": "Verification team",
+      "removalCondition": "Remove when verification route passes server session state."
+    }
+  ],
+  "serverToClientImports": []
+}

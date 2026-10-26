@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://agentranking.io/sitemap.xml
+
+# LLM and agent crawler reference:
+# https://agentranking.io/llms.txt

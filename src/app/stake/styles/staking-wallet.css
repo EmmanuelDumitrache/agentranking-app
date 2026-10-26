@@ -1,0 +1,24 @@
+/* Scoped Solana wallet-adapter styling — only inside .staking-wallet-strip */
+.staking-wallet-strip .wallet-adapter-button {
+  height: 2rem;
+  padding-inline: 0.75rem;
+  border-radius: var(--radius);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  border: none;
+  transition: background-color 150ms, color 150ms;
+}
+.staking-wallet-strip .wallet-adapter-button:hover:not([disabled]) {
+  opacity: 0.92;
+}
+.staking-wallet-strip .wallet-adapter-button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.staking-wallet-strip .wallet-adapter-dropdown-list,
+.staking-wallet-strip .wallet-adapter-modal-wrapper {
+  font-family: inherit;
+}

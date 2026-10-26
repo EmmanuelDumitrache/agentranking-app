@@ -1,0 +1,26 @@
+# Local services for the demo: PostgreSQL (data) and Valkey (cache + rate limits).
+#   docker compose up -d
+# Credentials below are for this local container only.
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: agentranking
+      POSTGRES_PASSWORD: agentranking
+      POSTGRES_DB: agentranking_demo
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agentranking -d agentranking_demo"]
+      interval: 5s
+      retries: 10
+
+  valkey:
+    image: valkey/valkey:8
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:

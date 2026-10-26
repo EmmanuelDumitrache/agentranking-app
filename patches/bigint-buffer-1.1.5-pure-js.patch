@@ -1,0 +1,18 @@
+diff --git a/dist/node.js b/dist/node.js
+index 56c65f404b264ade3a6155d13839659d5901aa55..6b0643e1996a91363ad29d3e9c8447ac20ea4fff 100644
+--- a/dist/node.js
++++ b/dist/node.js
+@@ -5,3 +5,3 @@ let converter;
+     try {
+-        converter = require('bindings')('bigint_buffer');
++        // AgentRanking: native addon disabled; CVE-2025-3194 has no patched upstream release.
+     }
+diff --git a/src/index.ts b/src/index.ts
+index 063d13bc2cf7e181d240f8bf7ad191b1c522185f..cd671450d91a77ebbb9e41fdfba964ed35bae87b 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -11,3 +11,3 @@ if (!process.browser) {
+   try {
+-    converter = require('bindings')('bigint_buffer');
++    // AgentRanking: native addon disabled; CVE-2025-3194 has no patched upstream release.
+   } catch (e) {

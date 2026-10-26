@@ -1,0 +1,272 @@
+.sectionReveal {
+  opacity: 0;
+  transform: translateY(14px);
+  will-change: transform, opacity;
+}
+.sectionRevealSubtle {
+  transform: translateY(8px);
+}
+.sectionRevealReduced {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+.sectionRevealVisible {
+  animation: sectionFadeUp 680ms ease-out both;
+}
+.sectionRevealVisible.sectionRevealSubtle {
+  animation: sectionFadeUpSubtle 520ms ease-out both;
+}
+@keyframes sectionFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes sectionFadeUpSubtle {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.heroGradientDrift {
+  animation: heroGradientDrift 14s ease-in-out infinite alternate;
+}
+@keyframes heroGradientDrift {
+  0% {
+    opacity: 0.85;
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.06) translate(2%, -2%);
+  }
+}
+.mockCardFloat {
+  animation: mockCardFloat 5s ease-in-out infinite;
+}
+.mockCardFloatDelay1 {
+  animation-delay: 0.4s;
+}
+.mockCardFloatDelay2 {
+  animation-delay: 0.9s;
+}
+.mockCardFloatDelay3 {
+  animation-delay: 1.4s;
+}
+@keyframes mockCardFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.gridGlow {
+  background-image:
+    linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 75%);
+}
+/* Browser chrome */
+.browserFrame {
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.06),
+    0 16px 48px oklch(0 0 0 / 0.45);
+}
+.browserChromeDot {
+  height: 0.45rem;
+  width: 0.45rem;
+  border-radius: 9999px;
+}
+.browserChromeDotEmerald {
+  background: oklch(0.65 0.2 155 / 0.7);
+}
+.browserChromeDotMuted {
+  background: oklch(0.55 0.02 250 / 0.4);
+}
+.browserUrlBar {
+  font-variant-numeric: tabular-nums;
+}
+.cursorBlink {
+  animation: cursorBlink 1s step-end infinite;
+}
+@keyframes cursorBlink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+.titleGradientShift {
+  background-size: 200% auto;
+  animation: titleGradientShift 8s ease-in-out infinite alternate;
+}
+@keyframes titleGradientShift {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 100% center;
+  }
+}
+.tokenBarTrack {
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: oklch(1 0 0 / 0.06);
+  overflow: hidden;
+}
+.tokenBarFill {
+  height: 100%;
+  border-radius: 9999px;
+  width: 0%;
+  transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tokenBarFillVisible {
+  width: var(--token-pct);
+}
+.arCoinPulse {
+  animation: arCoinPulse 2.8s ease-in-out infinite;
+}
+@keyframes arCoinPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.75 0.15 85 / 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 10px oklch(0.75 0.15 85 / 0);
+  }
+}
+.cardShine {
+  position: relative;
+  overflow: hidden;
+}
+.cardShine::after {
+  content: "";
+  position: absolute;
+  inset: -100% -60%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    oklch(1 0 0 / 0.06) 48%,
+    oklch(1 0 0 / 0.12) 50%,
+    oklch(1 0 0 / 0.06) 52%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .cardShine:hover::after {
+    transform: translateX(120%);
+  }
+}
+.browserShine {
+  position: relative;
+  overflow: hidden;
+}
+.browserShine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.04), transparent);
+  animation: browserShineSweep 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes browserShineSweep {
+  0% {
+    left: -100%;
+  }
+  45%,
+  100% {
+    left: 140%;
+  }
+}
+.filterTabActive {
+  position: relative;
+}
+.filterTabActive::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: -2px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  animation: filterUnderline 0.35s ease-out;
+}
+@keyframes filterUnderline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.mockButtonPulse {
+  animation: mockButtonPulse 2s ease-in-out infinite;
+}
+@keyframes mockButtonPulse {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 12px oklch(0.65 0.2 155 / 0.25);
+  }
+}
+.pageOverflowClip {
+  overflow-x: clip;
+}
+@media (max-width: 767px) {
+  .mockCardFloat,
+  .mockCardFloatDelay1,
+  .mockCardFloatDelay2,
+  .mockCardFloatDelay3 {
+    animation: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sectionReveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .heroGradientDrift,
+  .mockCardFloat,
+  .mockCardFloatDelay1,
+  .mockCardFloatDelay2,
+  .mockCardFloatDelay3,
+  .titleGradientShift,
+  .arCoinPulse,
+  .browserShine::before,
+  .mockButtonPulse {
+    animation: none;
+  }
+  .tokenBarFill {
+    width: var(--token-pct);
+    transition: none;
+  }
+  .cardShine::after {
+    display: none;
+  }
+}

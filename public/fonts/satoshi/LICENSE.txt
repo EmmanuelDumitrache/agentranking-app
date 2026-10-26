@@ -1,0 +1,12 @@
+Satoshi (Fontshare)
+
+Font: Satoshi
+Copyright (c) Indian Type Foundry (https://fontshare.com/fonts/satoshi)
+
+This font is provided through Fontshare (https://www.fontshare.com/) under the
+Fontshare Free Font License (FFL). Full terms:
+https://www.fontshare.com/licenses/ffl
+
+The file Satoshi-Variable.woff2 in this directory was obtained from Fontshare’s
+CDN for self-hosting in this web application. Do not redistribute the font files
+outside the terms of the FFL.

@@ -1,0 +1,31 @@
+{
+  "query": {
+    "exact": ["/", "/verify", "/metaplex", "/internal/staking/setup"],
+    "prefixes": [
+      "/agents",
+      "/compare",
+      "/feedback",
+      "/jobs",
+      "/locked-supply",
+      "/networks",
+      "/new",
+      "/powerboost",
+      "/profiles",
+      "/sap",
+      "/social",
+      "/telegram",
+      "/token/referrals",
+      "/tokens/robinhood",
+      "/verify",
+      "/verified"
+    ]
+  },
+  "session": {
+    "exact": [],
+    "prefixes": ["/profiles", "/social"]
+  },
+  "wallet": {
+    "exact": ["/create"],
+    "prefixes": ["/custom-list", "/launch", "/profiles", "/social"]
+  }
+}

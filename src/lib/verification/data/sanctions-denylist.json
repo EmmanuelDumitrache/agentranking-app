@@ -1,0 +1,12 @@
+[
+  {
+    "address": "0x000000000000000000000000000000000000dead",
+    "chain": "evm",
+    "reason": "demo-denylist"
+  },
+  {
+    "address": "DemoSanction1111111111111111111111111111111",
+    "chain": "solana",
+    "reason": "demo-denylist"
+  }
+]

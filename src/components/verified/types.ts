@@ -1,0 +1,38 @@
+export type VerifiedAgentListItem = {
+  id: number;
+  agentId: number;
+  chainId: number;
+  name: string;
+  image: string;
+  slug?: string;
+  profilePath: string;
+  isPremiumVerified: boolean;
+  isVerifiedRevenue?: boolean;
+  perfLastComputedAt?: string | null;
+  archetype?: string;
+  archetypeAuto?: boolean;
+  agentMode?: string;
+  chain: { name: string; shortName: string; color: string; icon: string };
+  services: { name: string }[];
+  publishedMcpOfferCount?: number;
+  deploymentCount?: number;
+  serviceCount?: number;
+  devProofActive?: boolean;
+  x402Detected?: boolean;
+  x402Payable?: boolean;
+  x402Support?: boolean;
+  githubConnected?: boolean;
+  devProofLastPushAt?: string | null;
+  devProofLatestPushMessage?: string | null;
+  protocolTrustScore?: number | null;
+  agentRankScore?: number | null;
+  lastActiveAt?: string | null;
+  listedAt?: string | null;
+  chainLogoStack?: Array<{
+    chainId: number;
+    icon: string;
+    chainShortName: string;
+    chainName: string;
+  }>;
+};
+export type VerifiedAgentRow = VerifiedAgentListItem & { isVerified: boolean };

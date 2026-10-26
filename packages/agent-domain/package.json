@@ -1,0 +1,13 @@
+{
+  "name": "@agentranking/agent-domain",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./agent-score": "./src/agent-score.ts",
+    "./refined-types": "./src/refined-types.ts"
+  },
+  "dependencies": {
+    "multiformats": "14.0.5"
+  }
+}

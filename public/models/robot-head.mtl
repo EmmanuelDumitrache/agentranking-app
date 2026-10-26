@@ -1,0 +1,19 @@
+# Exported by three-d-stage
+newmtl head_shell
+Kd 0.9216 0.9301 0.9473
+Ks 0.2000 0.2000 0.2000
+Ns 156
+d 1.0000
+
+newmtl gasket_dark
+Kd 0.0232 0.0232 0.0273
+Ks 0.2000 0.2000 0.2000
+Ns 100
+d 1.0000
+
+newmtl shell_white
+Kd 0.9216 0.9301 0.9473
+Ks 0.2000 0.2000 0.2000
+Ns 156
+d 1.0000
+

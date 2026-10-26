@@ -1,0 +1,75 @@
+import type { AgentListBadgeInput } from "@/lib/agent-list-status-badges";
+/** Agent row shape from `/api/agents` listView. */
+export type DirectoryAgent = AgentListBadgeInput & {
+  id: number;
+  agentId: number;
+  chainId: number;
+  name: string;
+  description: string;
+  image: string;
+  owner: string;
+  score: number;
+  rank?: number;
+  organicRank?: number;
+  stars: number;
+  totalFeedback: number;
+  x402Support: boolean;
+  scoreWallet?: number;
+  hotScore?: number;
+  binanceCompatible?: boolean;
+  createdAt: string;
+  listedAt?: string | null;
+  lastActiveAt?: string;
+  slug?: string | null;
+  profilePath: string;
+  deploymentCount?: number;
+  chainLogoStack?: Array<{
+    chainId: number;
+    icon: string;
+    chainShortName: string;
+    chainName: string;
+  }>;
+  chain: { name: string; shortName: string; color: string; icon: string };
+  services?: Array<{ id: number; name: string; endpoint?: string | null }>;
+  archetype?: string;
+  archetypeAuto?: boolean;
+  agentMode?: string;
+  agentRankScore?: number;
+  reputationScore?: number;
+  protocolTrustScore?: number;
+  executionScore?: number;
+  powerScore?: number;
+  activeBoosts?: number;
+  adminPowerAdjust?: number;
+  hasHolderPowerBoost?: boolean;
+  metadata?: Array<{ key: string; value: string }>;
+  hatcher?: { partnerScore?: number | null } | null;
+  covenant?: { isCovenant?: boolean } | null;
+};
+export type DirectoryAgentListResponse = {
+  agents: DirectoryAgent[];
+  total: number;
+  page: number;
+  perPage: number;
+  totalPages: number;
+  protocolTrustSort?: { capped: boolean; fullMatchCount: number; poolSize: number };
+};
+export type DirectoryEcosystemStats = {
+  totalAgents: number;
+  verifiedAgents: number;
+  x402Agents: number;
+  mcpAgents: number;
+  totalFeedback?: number;
+  totalChains?: number;
+  updatedAt?: string;
+  series?: {
+    total: Array<{ date: string; value: number }>;
+    verified: Array<{ date: string; value: number }>;
+    mcp: Array<{ date: string; value: number }>;
+    x402: Array<{ date: string; value: number }>;
+    feedback: Array<{ date: string; value: number }>;
+    networks: Array<{ date: string; value: number }>;
+  };
+};
+export type DirectoryViewId = "directory" | "payments" | "protocols" | "reputation";
+export type DirectoryTimeWindow = "24h" | "7d" | "30d" | "live" | "all";
