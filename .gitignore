@@ -31,3 +31,8 @@ next-env.d.ts
 # files written by `next dev` for coding agents
 /AGENTS.md
 /CLAUDE.md
+
+# agent skills installed by Vercel/Neon CLIs
+/.agents/
+/.claude/
+/skills-lock.json
