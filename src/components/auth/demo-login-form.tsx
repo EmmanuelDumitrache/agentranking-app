@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { ArrowLeft, Info } from "lucide-react";
@@ -7,13 +7,22 @@ import { AuthForm } from "@/components/auth/auth-form";
 import { AuthWaveBackground } from "@/components/auth/auth-wave-background";
 import { DEFAULT_APP_POST_LOGIN_PATH, normalizeAppCallbackPath, buildSignInCallbackUrl } from "@/lib/app-auth-routes";
 
-/** DEMO_MODE sign-in: one shared demo account instead of OAuth, email or wallet login. */
+/**
+ * DEMO_MODE sign-in: one shared demo account instead of OAuth, email or wallet login.
+ * Signs in on arrival so every route into the app skips this step; the button retries.
+ */
 export function DemoLoginForm({ publicSiteUrl }: { readonly publicSiteUrl: string }) {
   const searchParams = useSearchParams();
   const callbackUrl = normalizeAppCallbackPath(
     searchParams.get("callbackUrl") ?? DEFAULT_APP_POST_LOGIN_PATH,
   );
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const started = useRef(false);
+  useEffect(() => {
+    if (started.current) return;
+    started.current = true;
+    void signIn("demo", { callbackUrl: buildSignInCallbackUrl(callbackUrl) }).finally(() => setLoading(false));
+  }, [callbackUrl]);
   return (
     <div className="ui-auth-youtube fixed inset-0 z-40 flex overflow-hidden text-[#f1f1f1]">
       <AuthWaveBackground />
@@ -31,7 +40,7 @@ export function DemoLoginForm({ publicSiteUrl }: { readonly publicSiteUrl: strin
           title="Agent Ranking Dashboard"
           description="Explore the creator workspace with a shared demo account."
           primaryAction={{
-            label: loading ? "Signing in…" : "Continue as demo user",
+            label: loading ? "Opening the demo workspace…" : "Continue as demo user",
             onClick: () => {
               setLoading(true);
               void signIn("demo", { callbackUrl: buildSignInCallbackUrl(callbackUrl) });

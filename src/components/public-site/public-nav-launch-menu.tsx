@@ -1,6 +1,7 @@
 import { LayoutDashboard, Rocket } from "lucide-react";
 import type { ReactNode } from "react";
 import { PublicNavLink } from "@/components/public-site/public-nav-link";
+import { isDemoMode } from "@/lib/demo-mode";
 import { publicSiteRoutes } from "@/lib/public-site/routes";
 import { cn } from "@/lib/utils";
 
@@ -52,7 +53,7 @@ export function PublicNavLaunchMenuItems({
         href={publicSiteRoutes.launchApp}
         icon={<LayoutDashboard className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden />}
         title="App"
-        subtitle="Creator dashboard on app.agentranking.io"
+        subtitle={isDemoMode() ? "Creator dashboard, signed in as the demo user" : "Creator dashboard on app.agentranking.io"}
         onNavigate={onNavigate}
         className={itemClassName}
         titleClassName={titleClassName}

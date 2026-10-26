@@ -16,6 +16,7 @@ import {
   PUBLIC_NAV_LOGO_LINK_CLASS,
 } from "@/components/public-site/public-nav-island";
 import { PublicNavLaunchMenuItems } from "@/components/public-site/public-nav-launch-menu";
+import { isDemoMode } from "@/lib/demo-mode";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -171,6 +172,16 @@ export function PublicSiteNav({ links }: Props) {
                 </SheetClose>
               </div>
               <nav className="flex flex-col gap-1 p-4">
+                {isDemoMode() ? (
+                  <PublicNavLink
+                    href="/demo"
+                    onClick={closeMobile}
+                    className={cn(PUBLIC_NAV_LAUNCH_CTA_MOBILE_CLASS, "mb-2 inline-flex items-center gap-2.5 px-3")}
+                  >
+                    <LayoutDashboard className="h-4 w-4 shrink-0 opacity-70" aria-hidden />
+                    Open demo app
+                  </PublicNavLink>
+                ) : null}
                 {primaryLinks.map((item) => (
                   <MobileNavLink key={item.label} link={item} pathname={pathname} onNavigate={closeMobile} />
                 ))}
@@ -189,6 +200,15 @@ export function PublicSiteNav({ links }: Props) {
               </div>
             </SheetContent>
           </Sheet>
+          {isDemoMode() ? (
+            <PublicNavLink
+              href="/demo"
+              className={cn(PUBLIC_NAV_LAUNCH_CTA_CLASS, "hidden items-center gap-1.5 sm:inline-flex")}
+            >
+              <LayoutDashboard className="h-3.5 w-3.5 opacity-70" aria-hidden />
+              Open demo app
+            </PublicNavLink>
+          ) : null}
           <DropdownMenu>
             <DropdownMenuTrigger
               className={cn(
@@ -210,7 +230,7 @@ export function PublicSiteNav({ links }: Props) {
                   <span className="min-w-0">
                     <span className="block text-[13px] font-medium leading-none">App</span>
                     <span className="text-muted-foreground mt-1 block text-[11px] leading-none">
-                      Creator dashboard on app.agentranking.io
+                      {isDemoMode() ? "Creator dashboard, signed in as the demo user" : "Creator dashboard on app.agentranking.io"}
                     </span>
                   </span>
                 </PublicNavLink>
