@@ -22,6 +22,12 @@ const ipfsImageRemotePattern = (() => {
 const deploymentId = process.env.NEXT_DEPLOYMENT_ID?.trim() || undefined;
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  // Keep the production build within a Vercel Hobby build machine (8 GB RAM).
+  experimental: {
+    turbopackMemoryEviction: "full",
+    turbopackSourceMaps: false,
+    cpus: 2,
+  },
   // Derive browser-visible values from the authoritative root environment at
   // configuration time. This replaces the removed generated runtime env files.
   env: {
