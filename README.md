@@ -53,7 +53,7 @@ flowchart LR
 
 - **Next.js App Router** renders the public pages on the server and serves the JSON APIs (`src/app/api`).
 - **PostgreSQL** is the source of truth. Ranking, search and filtering are SQL. Triggers mark an agent's score as stale whenever its facts change.
-- **Valkey** (Redis-compatible) holds the public API cache, rate-limit counters and cross-instance locks.
+- **Valkey** (Redis-compatible) holds the public API cache, rate-limit counters and cross-instance locks. The demo can run without it (see [`src/lib/valkey.ts`](src/lib/valkey.ts), `isValkeyMemoryStore`).
 - **The worker** (`src/worker`) indexes 30 EVM networks and Solana in production. It is switched off in this demo.
 
 **[docs/DATA-MODEL.md](docs/DATA-MODEL.md) explains the data storage in plain English**, with diagrams: the tables, how data flows in, how scores are derived and what Valkey is for.
@@ -67,7 +67,7 @@ flowchart LR
 | Auth | NextAuth 4 (the demo uses a single demo-account provider) |
 | Web3 | viem, wagmi and RainbowKit (EVM), Solana web3.js and wallet adapter |
 | Validation | Zod 4 |
-| Hosting | Vercel (demo); the production system ran on a Linux VPS |
+| Hosting | Vercel and Neon (demo); the production system ran on a Linux VPS |
 
 ## By the numbers
 
@@ -104,8 +104,8 @@ Useful scripts:
 
 ## Deploy to Vercel
 
-1. Create a Vercel project from this repository. Add a **Neon** Postgres database and an **Upstash** Redis database from the Vercel Marketplace.
-2. Set the environment variables from [`.env.example`](.env.example). `VALKEY_URL` is the Upstash `rediss://` URL. The five URL variables are the deployment's own origin. They must be set before the first build, because `NEXT_PUBLIC_*` values are compiled into the browser bundle.
+1. Create a Vercel project from this repository and add a **Neon** Postgres database from the Vercel Marketplace.
+2. Set the environment variables from [`.env.example`](.env.example). `VALKEY_URL` is optional in demo mode: without it, the cache and locks live in each server instance's memory and rate limits are off. The live demo runs this way. The five URL variables are the deployment's own origin. They must be set before the first build, because `NEXT_PUBLIC_*` values are compiled into the browser bundle.
 3. Run `pnpm demo:setup` once against the Neon database, then deploy.
 
 ## Repository map

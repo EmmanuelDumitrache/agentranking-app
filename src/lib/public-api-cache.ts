@@ -15,6 +15,8 @@ import {
   tryAcquireValkeyLease,
   valkeyDeleteKeys,
   valkeyEval,
+  isValkeyMemoryStore,
+  valkeyMemoryUpdate,
   valkeyGetJson,
   valkeySetJsonIfLeaseOwner,
 } from "@/lib/valkey";
@@ -97,6 +99,15 @@ const defaultBackend: PublicApiCacheTestBackend = {
   releaseLease: releaseValkeyLease,
   publishJsonIfLeaseOwner: valkeySetJsonIfLeaseOwner,
   async reconcileGeneration(input) {
+    if (isValkeyMemoryStore()) {
+      // Same rules as GENERATION_ADVANCE_LUA and GENERATION_MAX_LUA.
+      return Number(valkeyMemoryUpdate(input.key, (raw) => {
+        const current = raw === null ? Number.NaN : Number(raw);
+        if (Number.isNaN(current) || current < 0) return String(input.candidate);
+        if (input.advance) return String(input.candidate <= current ? current + 1 : input.candidate);
+        return String(Math.max(current, input.candidate));
+      }));
+    }
     const result = await valkeyEval({
       script: input.advance ? GENERATION_ADVANCE_LUA : GENERATION_MAX_LUA,
       keys: [input.key],

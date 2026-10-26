@@ -33,10 +33,61 @@ type GlobalValkeyState = {
   url?: string;
 };
 
+type MemoryEntry = { value: string; expiresAt: number | null };
+
 const globalForValkey = globalThis as typeof globalThis & {
   __agentrankingValkey?: GlobalValkeyState;
+  __agentrankingValkeyMemory?: Map<string, MemoryEntry>;
 };
 const state = (globalForValkey.__agentrankingValkey ??= {});
+
+const MEMORY_STORE_MAX_ENTRIES = 5_000;
+const memoryStore = (globalForValkey.__agentrankingValkeyMemory ??= new Map());
+
+/**
+ * Demo builds may run without a Valkey server. Cache entries and leases then live in
+ * process memory (one store per server instance), pub/sub is a no-op and rate limits pass.
+ */
+export function isValkeyMemoryStore(): boolean {
+  return process.env.DEMO_MODE === "true" && !process.env.VALKEY_URL?.trim();
+}
+
+function memoryGet(key: string): string | null {
+  const entry = memoryStore.get(key);
+  if (!entry) return null;
+  if (entry.expiresAt !== null && entry.expiresAt <= Date.now()) {
+    memoryStore.delete(key);
+    return null;
+  }
+  return entry.value;
+}
+
+function memorySet(key: string, value: string, ttlMs: number | null, onlyIfAbsent = false): boolean {
+  if (onlyIfAbsent && memoryGet(key) !== null) return false;
+  memoryStore.delete(key);
+  if (memoryStore.size >= MEMORY_STORE_MAX_ENTRIES) {
+    const oldest = memoryStore.keys().next().value;
+    if (oldest !== undefined) memoryStore.delete(oldest);
+  }
+  memoryStore.set(key, { value, expiresAt: ttlMs === null ? null : Date.now() + ttlMs });
+  return true;
+}
+
+function memoryDeleteIfValueMatches(key: string, expected: string): boolean {
+  if (memoryGet(key) !== expected) return false;
+  memoryStore.delete(key);
+  return true;
+}
+
+/** Read, then write, a key in the memory store. Used for scripts that run atomically in Valkey. */
+export function valkeyMemoryUpdate(
+  key: string,
+  update: (current: string | null) => string,
+): string {
+  const next = update(memoryGet(key));
+  memorySet(key, next, null);
+  return next;
+}
 
 export type SlidingWindowResult = {
   success: boolean;
@@ -265,6 +316,7 @@ export async function getValkeyClient(): Promise<ValkeyClient> {
 }
 
 export async function valkeyGetString(key: string): Promise<string | null> {
+  if (isValkeyMemoryStore()) return memoryGet(key);
   const client = await getValkeyClient();
   return client.get(key);
 }
@@ -331,8 +383,12 @@ export async function valkeySetStringPx(
   value: string,
   ttlMs: number,
 ): Promise<void> {
-  const client = await getValkeyClient();
   const boundedTtlMs = Math.min(30 * 24 * 60 * 60_000, Math.max(1, Math.trunc(ttlMs)));
+  if (isValkeyMemoryStore()) {
+    memorySet(key, value, boundedTtlMs);
+    return;
+  }
+  const client = await getValkeyClient();
   await client.set(key, value, { PX: boundedTtlMs });
 }
 
@@ -341,19 +397,26 @@ export async function valkeySetStringNxPx(
   value: string,
   ttlMs: number,
 ): Promise<boolean> {
-  const client = await getValkeyClient();
   const boundedTtlMs = Math.min(30 * 24 * 60 * 60_000, Math.max(1, Math.trunc(ttlMs)));
+  if (isValkeyMemoryStore()) return memorySet(key, value, boundedTtlMs, true);
+  const client = await getValkeyClient();
   const result = await client.set(key, value, { NX: true, PX: boundedTtlMs });
   return result === "OK";
 }
 
 export async function valkeyDeleteKeys(keys: readonly string[]): Promise<number> {
   if (keys.length === 0) return 0;
+  if (isValkeyMemoryStore()) {
+    return keys.filter((key) => memoryGet(key) !== null && memoryStore.delete(key)).length;
+  }
   const client = await getValkeyClient();
   return client.del([...keys]);
 }
 
 export async function valkeyIncrement(key: string): Promise<number> {
+  if (isValkeyMemoryStore()) {
+    return Number(valkeyMemoryUpdate(key, (current) => String((Number(current) || 0) + 1)));
+  }
   const client = await getValkeyClient();
   const value = await client.incr(key);
   if (!Number.isSafeInteger(value) || value < 1) {
@@ -364,6 +427,7 @@ export async function valkeyIncrement(key: string): Promise<number> {
 
 
 export async function valkeyDeleteIfValueMatches(key: string, expected: string): Promise<boolean> {
+  if (isValkeyMemoryStore()) return memoryDeleteIfValueMatches(key, expected);
   const result = await valkeyEval({
     script: DELETE_IF_VALUE_MATCHES_LUA,
     keys: [key],
@@ -377,6 +441,7 @@ export async function valkeyEval(input: {
   keys: readonly string[];
   args?: readonly string[];
 }): Promise<unknown> {
+  if (isValkeyMemoryStore()) throw new Error("Lua scripts need a Valkey server; set VALKEY_URL");
   const client = await getValkeyClient();
   return client.sendCommand([
     "EVAL",
@@ -392,8 +457,12 @@ export async function valkeySetJson(
   value: unknown,
   ttlSeconds: number,
 ): Promise<void> {
-  const client = await getValkeyClient();
   const boundedTtlSeconds = Math.min(30 * 24 * 60 * 60, Math.max(1, Math.trunc(ttlSeconds)));
+  if (isValkeyMemoryStore()) {
+    memorySet(key, stringifyJsonCompatible(value), boundedTtlSeconds * 1_000);
+    return;
+  }
+  const client = await getValkeyClient();
   await client.set(key, stringifyJsonCompatible(value), { EX: boundedTtlSeconds });
 }
 
@@ -404,12 +473,16 @@ export async function valkeySetJsonIfLeaseOwner(input: {
   value: unknown;
   ttlSeconds: number;
 }): Promise<boolean> {
-  const client = await getValkeyClient();
   const boundedTtlSeconds = Math.min(
     30 * 24 * 60 * 60,
     Math.max(1, Math.trunc(input.ttlSeconds)),
   );
   const serialized = stringifyJsonCompatible(input.value);
+  if (isValkeyMemoryStore()) {
+    if (memoryGet(input.leaseKey) !== input.token) return false;
+    return memorySet(input.key, serialized, boundedTtlSeconds * 1_000);
+  }
+  const client = await getValkeyClient();
   const result = await client.sendCommand([
     "EVAL",
     LEASE_PUBLISH_JSON_LUA,
@@ -459,6 +532,18 @@ export async function slidingWindowLimitMany(
     if (!rule.key.trim() || rule.key.length > 512) {
       throw new RangeError("Rate-limit keys must contain 1-512 characters");
     }
+  }
+  if (isValkeyMemoryStore()) {
+    const now = Date.now();
+    return {
+      success: true,
+      results: normalized.map((rule) => ({
+        success: true,
+        limit: rule.limit,
+        remaining: rule.limit - 1,
+        reset: now + rule.windowMs,
+      })),
+    };
   }
   const now = await valkeyServerTimeMs();
   const result = await valkeyEval({
@@ -510,6 +595,7 @@ export async function slidingWindowLimit(input: SlidingWindowRule): Promise<Slid
 }
 
 export async function valkeyPublish(channel: string, message: string): Promise<number> {
+  if (isValkeyMemoryStore()) return 0;
   const client = await getValkeyClient();
   return client.publish(channel, message);
 }
@@ -518,6 +604,7 @@ export async function subscribeValkeyChannel(
   channel: string,
   listener: (message: string) => void,
 ): Promise<() => Promise<void>> {
+  if (isValkeyMemoryStore()) return async () => {};
   const commandClient = await getValkeyClient();
   const subscriber = commandClient.duplicate();
   subscriber.on("error", (error) => {
@@ -566,8 +653,9 @@ export async function tryAcquireValkeyLease(input: {
   token: string;
   ttlMs: number;
 }): Promise<boolean> {
-  const client = await getValkeyClient();
   const ttlMs = Math.min(60 * 60_000, Math.max(1, Math.trunc(input.ttlMs)));
+  if (isValkeyMemoryStore()) return memorySet(input.key, input.token, ttlMs, true);
+  const client = await getValkeyClient();
   const result = await client.set(input.key, input.token, {
     NX: true,
     PX: ttlMs,
@@ -580,6 +668,10 @@ export async function renewValkeyLease(input: {
   token: string;
   ttlMs: number;
 }): Promise<boolean> {
+  if (isValkeyMemoryStore()) {
+    if (memoryGet(input.key) !== input.token) return false;
+    return memorySet(input.key, input.token, Math.min(60 * 60_000, Math.max(1, Math.trunc(input.ttlMs))));
+  }
   const client = await getValkeyClient();
   const result = await client.sendCommand([
     "EVAL",
@@ -596,6 +688,7 @@ export async function releaseValkeyLease(input: {
   key: string;
   token: string;
 }): Promise<boolean> {
+  if (isValkeyMemoryStore()) return memoryDeleteIfValueMatches(input.key, input.token);
   const client = await getValkeyClient();
   const result = await client.sendCommand([
     "EVAL",
