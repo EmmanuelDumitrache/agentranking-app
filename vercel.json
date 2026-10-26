@@ -1,4 +1,9 @@
 {
   "buildCommand": "pnpm run build",
-  "regions": ["sin1"]
+  "regions": [
+    "sin1"
+  ],
+  "git": {
+    "deploymentEnabled": false
+  }
 }

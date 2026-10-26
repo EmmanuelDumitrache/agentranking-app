@@ -2,6 +2,11 @@ packages:
   - packages/agent-domain
 # This repository intentionally accepts explicitly selected package versions immediately.
 minimumReleaseAge: 0
+# Also install Linux binaries (sharp) so a build made on macOS runs on Vercel.
+supportedArchitectures:
+  os: [current, linux]
+  cpu: [current, x64]
+  libc: [current, glibc]
 overrides:
   '@tanstack/query-core': 5.102.0
   '@tanstack/react-query': 5.102.0
